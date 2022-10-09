@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: iot
+metadata:
+  name: default
+  labels:
+    kustomize.toolkit.fluxcd.io/prune: disabled
