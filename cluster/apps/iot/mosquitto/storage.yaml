@@ -6,6 +6,7 @@ metadata:
   labels:
     app: mosquitto
 spec:
+  storageClassName: ""
   capacity:
     storage: 1Gi
   volumeMode: Filesystem
@@ -27,6 +28,7 @@ apiVersion: v1
 metadata:
   name: mosquitto
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
