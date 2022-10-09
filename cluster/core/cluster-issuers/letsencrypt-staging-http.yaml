@@ -11,5 +11,5 @@ spec:
       name: letsencrypt-staging-http
     solvers:
       - http01:
-        ingress:
-          class: nginx
+          ingress:
+            class: nginx
