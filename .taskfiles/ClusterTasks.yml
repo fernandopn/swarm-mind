@@ -69,6 +69,11 @@ tasks:
     cmds:
       - kubectl get ingress {{.CLI_ARGS | default "-A"}}
 
+  services:
+    desc: List all the services in your cluster
+    cmds:
+      - kubectl get svc {{.CLI_ARGS | default "-A"}}
+
   resources:
     desc: Gather common resources in your cluster, useful when asking for support
     cmds:
