@@ -5,9 +5,9 @@ metadata:
   name: mosquitto
 spec:
   interval: 1h
+  timeout: 10m
   chart:
     spec:
-      timeout: 10m
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: mosquitto
       version: 4.8.2
@@ -20,7 +20,7 @@ spec:
 
     # Backup
     podAnnotations:
-      backup.velero.io/backup-volumes: data
+      # backup.velero.io/backup-volumes: data
       configmap.reloader.stakater.com/reload: "mosquitto"
 
     image:
