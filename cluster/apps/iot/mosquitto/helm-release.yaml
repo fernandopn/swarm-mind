@@ -77,13 +77,13 @@ spec:
 
     service:
       main:
-        type: "LoadBalancer"
+        type: LoadBalancer
         externalTrafficPolicy: Local
         loadBalancerIP: 10.0.6.227
         annotations:
           coredns.io/hostname: mosquitto.home.${SECRET_DOMAIN}
           external-dns.alpha.kubernetes.io/hostname: mosquitto.home.${SECRET_DOMAIN}
-          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          external-dns.alpha.kubernetes.io/target: ipv4.${SECRET_DOMAIN}
           external-dns/is-public: "true"
         ports:
           mqtttls:
