@@ -78,8 +78,6 @@ spec:
         type: "LoadBalancer"
         externalTrafficPolicy: Local
         loadBalancerIP: 10.0.6.227
-        annotations:
-          kdns.io/domain-override: mosquitto.home.${SECRET_DOMAIN}
         ports:
           mqtttls:
             enabled: true
@@ -94,11 +92,11 @@ spec:
           # nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
           # nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
         hosts:
-          - host: mosquitto.${SECRET_DOMAIN}
+          - host: mosquitto.home.${SECRET_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - mosquitto.${SECRET_DOMAIN}
+              - mosquitto.home.${SECRET_DOMAIN}
             secretName: mosquitto-tls
