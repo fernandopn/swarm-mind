@@ -74,6 +74,11 @@ tasks:
     cmds:
       - kubectl get svc {{.CLI_ARGS | default "-A"}}
 
+  kubectl:
+    desc: List all the services in your cluster
+    cmds:
+      - kubectl {{.CLI_ARGS | default "get po -A"}}
+
   resources:
     desc: Gather common resources in your cluster, useful when asking for support
     cmds:
