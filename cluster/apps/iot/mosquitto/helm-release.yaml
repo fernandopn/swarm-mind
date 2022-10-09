@@ -7,6 +7,7 @@ spec:
   interval: 1h
   chart:
     spec:
+      timeout: 10m
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: mosquitto
       version: 4.8.2

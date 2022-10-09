@@ -28,6 +28,11 @@ tasks:
       - flux reconcile -n flux-system source git flux-cluster
       - flux reconcile -n flux-system kustomization flux-cluster
 
+  reconcile-kustomization:
+    desc: Force update Flux to reconcile a kustomization
+    cmds:
+      - flux reconcile -n flux-system kustomization {{.CLI_ARGS | default "apps"}}
+
   nodes:
     desc: List all the nodes in your cluster
     cmds:
