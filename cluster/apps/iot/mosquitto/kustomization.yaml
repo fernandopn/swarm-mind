@@ -6,3 +6,4 @@ resources:
   - config.sops.yaml
   - helm-release.yaml
   - storage.yaml
+  - certificate.yaml
