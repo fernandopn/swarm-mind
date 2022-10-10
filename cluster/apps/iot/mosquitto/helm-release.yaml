@@ -58,7 +58,7 @@ spec:
         type: custom
         volumeSpec:
           secret:
-            secretName: mosquitto-tls
+            secretName: &secrettls "mosquitto-tls"
       data:
         enabled: true
         existingClaim: mosquitto
@@ -80,7 +80,7 @@ spec:
         type: LoadBalancer
         loadBalancerIP: 10.0.6.227
         annotations:
-          coredns.io/hostname: mosquitto.home.${SECRET_DOMAIN}
+          coredns.io/hostname: *host
         ports:
           mqtttls:
             enabled: true
@@ -96,11 +96,11 @@ spec:
           external-dns.alpha.kubernetes.io/target: ipv4.${SECRET_DOMAIN}
           external-dns/is-public: "true"
         hosts:
-          - host: mosquitto.home.${SECRET_DOMAIN}
+          - host: &host "mosquitto.home.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - mosquitto.home.${SECRET_DOMAIN}
-            secretName: mosquitto-tls
+              - *host
+            secretName: *secrettls
