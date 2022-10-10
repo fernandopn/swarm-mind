@@ -28,9 +28,9 @@ spec:
     env:
       TZ: "${SECRET_TIMEZONE}"
 
-    # # TODO(fernandopn): Find a better solution
-    # # Internal DNS server
-    # dnsPolicy: "None"
+    # TODO(fernandopn): Find a better solution
+    # Internal DNS server
+    dnsPolicy: "ClusterFirstWithHostNet"
     # dnsConfig:
     #   nameservers:
     #     - 10.0.6.211
