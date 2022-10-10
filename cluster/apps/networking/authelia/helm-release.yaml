@@ -112,23 +112,24 @@ spec:
             resources:
               - '^/feed/.*ics\?apikey=.*$'
 
-          - domain:
-              # iot
-              - "home-assistant.${SECRET_DOMAIN}"
-            policy: bypass
-            networks:
-              - home
-
           # At Home
           - domain:
               # iot
               - "esphome-vscode.${SECRET_DOMAIN}"
               - "esphome.${SECRET_DOMAIN}"
-              - "home-assistant-vscode.${SECRET_DOMAIN}"
-              - "home-assistant.${SECRET_DOMAIN}"
+              - &homeassistant "home-assistant-vscode.${SECRET_DOMAIN}"
+              - &homeassistant "home-assistant.home.${SECRET_DOMAIN}"
               - "node-red.${SECRET_DOMAIN}"
               - "zigbee2mqtt-vscode.${SECRET_DOMAIN}"
               - "zigbee2mqtt.${SECRET_DOMAIN}"
             policy: two_factor
             subject:
               - "group:admins"
+
+
+          - domain:
+              # iot
+              - *homeassistant
+            policy: bypass
+            networks:
+              - home
