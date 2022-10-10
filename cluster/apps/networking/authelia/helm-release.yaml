@@ -117,7 +117,7 @@ spec:
               # iot
               - "esphome-vscode.${SECRET_DOMAIN}"
               - "esphome.${SECRET_DOMAIN}"
-              - &homeassistant-vscode "home-assistant-vscode.${SECRET_DOMAIN}"
+              - &homeassistant-vscode "home-assistant-vscode.home.${SECRET_DOMAIN}"
               - *homeassistant
               - "node-red.${SECRET_DOMAIN}"
               - "zigbee2mqtt-vscode.${SECRET_DOMAIN}"
