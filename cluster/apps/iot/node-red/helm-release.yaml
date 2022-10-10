@@ -28,12 +28,12 @@ spec:
     env:
       TZ: "${SECRET_TIMEZONE}"
 
-    # TODO(fernandopn): Find a better solution
-    # Internal DNS server
-    dnsPolicy: "None"
-    dnsConfig:
-      nameservers:
-        - 10.0.6.211
+    # # TODO(fernandopn): Find a better solution
+    # # Internal DNS server
+    # dnsPolicy: "None"
+    # dnsConfig:
+    #   nameservers:
+    #     - 10.0.6.211
 
     # Pod
     resources:
