@@ -111,6 +111,7 @@ spec:
               - "esphome-vscode.${SECRET_DOMAIN}"
               - "esphome.${SECRET_DOMAIN}"
               - "home-assistant-vscode.${SECRET_DOMAIN}"
+              - "home-assistant.${SECRET_DOMAIN}"
               - "node-red.${SECRET_DOMAIN}"
               - "zigbee2mqtt-vscode.${SECRET_DOMAIN}"
               - "zigbee2mqtt.${SECRET_DOMAIN}"
