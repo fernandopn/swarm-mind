@@ -47,7 +47,7 @@ spec:
         custom-http-errors: |-
           401,403,404,500,501,502,503
         enable-brotli: "true"
-        forwarded-for-header: "CF-Connecting-IP"
+        forwardwed-for-header: "CF-Connecting-IP"
         hsts-max-age: "31449600"
         keep-alive: 120
         keep-alive-requests: 10000
@@ -56,8 +56,8 @@ spec:
         use-forwarded-headers: "true"
       metrics:
         enabled: false
-      # podAnnotations:
-      #   configmap.reloader.stakater.com/reload: "cloudflare-proxied-networks"
+      podAnnotations:
+        configmap.reloader.stakater.com/reload: "cloudflare-proxied-networks"
       resources:
         requests:
           cpu: 10m
@@ -75,10 +75,10 @@ spec:
           value: lost-in-space
         - name: SHOW_DETAILS
           value: "false"
-  # valuesFrom:
-  #   # Cloudflare Networks
-  #   # https://www.cloudflare.com/ips/
-  #   - targetPath: controller.config.proxy-real-ip-cidr
-  #     kind: ConfigMap
-  #     name: cloudflare-proxied-networks
-  #     valuesKey: cloudflare-proxied-networks.txt
+  valuesFrom:
+    # Cloudflare Networks
+    # https://www.cloudflare.com/ips/
+    - targetPath: controller.config.proxy-real-ip-cidr
+      kind: ConfigMap
+      name: cloudflare-proxied-networks
+      valuesKey: cloudflare-proxied-networks.txt
