@@ -28,6 +28,7 @@ spec:
     env:
       TZ: "${SECRET_TIMEZONE}"
 
+    # TODO(fernandopn): Find a better solution
     # Internal DNS server
     dnsPolicy: "None"
     dnsConfig:
