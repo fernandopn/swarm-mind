@@ -105,6 +105,20 @@ spec:
               - 10.0.0.0/8
 
         rules:
+          - domain:
+              - "sonarr.${SECRET_DOMAIN}"
+              - "radarr.${SECRET_DOMAIN}"
+            policy: bypass
+            resources:
+              - '^/feed/.*ics\?apikey=.*$'
+
+          - domain:
+              # iot
+              - "home-assistant.${SECRET_DOMAIN}"
+            policy: bypass
+            networks:
+              - home
+
           # At Home
           - domain:
               # iot
