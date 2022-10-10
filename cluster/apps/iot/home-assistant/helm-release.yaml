@@ -82,7 +82,7 @@ spec:
         enabled: true
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          kubernetes.io/ingress.class: nginx-local
+          kubernetes.io/ingress.class: nginx
           nginx.ingress.kubernetes.io/auth-method: GET
           nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
           nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
@@ -115,7 +115,7 @@ spec:
           enabled: true
           annotations:
             cert-manager.io/cluster-issuer: letsencrypt-production
-            kubernetes.io/ingress.class: nginx-local
+            kubernetes.io/ingress.class: nginx
             nginx.ingress.kubernetes.io/auth-method: GET
             nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
             nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"

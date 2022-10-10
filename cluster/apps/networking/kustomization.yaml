@@ -7,7 +7,6 @@ resources:
   - cloudflare-ddns
   - external-dns
   - ingress-nginx
-  - ingress-nginx-local
   - k8s-gateway
   - metallb
   - shared
