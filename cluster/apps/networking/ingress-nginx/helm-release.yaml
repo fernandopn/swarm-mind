@@ -59,6 +59,10 @@ spec:
         enabled: false
       podAnnotations:
         configmap.reloader.stakater.com/reload: "cloudflare-proxied-networks"
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - 10.0.6.222
       resources:
         requests:
           cpu: 10m
