@@ -33,6 +33,9 @@ spec:
           enabled: true
           additionalLabels:
             release: kube-prometheus-stack
+      ingressClassResource:
+        # -- Name of the ingressClass
+        name: nginx-local
       resources:
         requests:
           memory: 100Mi
