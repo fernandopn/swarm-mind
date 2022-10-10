@@ -111,4 +111,4 @@ spec:
           tls:
             - hosts:
                 - *host-vscode
-              secretName: home-assistant-vscode-tls
+              secretName: zigbee2mqtt-vscode-tls
