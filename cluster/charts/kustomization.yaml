@@ -6,6 +6,7 @@ resources:
   - bitnami-charts.yaml
   - bjw-s-charts.yaml
   - external-dns-charts.yaml
+  - gissilabs-charts.yaml
   - hajimari-charts.yaml
   - ingress-nginx-charts.yaml
   - jetstack-charts.yaml
