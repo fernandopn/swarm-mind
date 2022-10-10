@@ -87,7 +87,7 @@ spec:
         type: LoadBalancer
         loadBalancerIP: 10.0.6.227
         annotations:
-          coredns.io/hostname: &host "mosquitto.${SECRET_DOMAIN}"
+          coredns.io/hostname: "mosquitto.${SECRET_DOMAIN}"
         ports:
           mqtttls:
             enabled: true
@@ -100,7 +100,7 @@ metadata:
   namespace: iot
 spec:
   dnsNames:
-    - *host
+    - "mosquitto.${SECRET_DOMAIN}"
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
