@@ -60,7 +60,7 @@ spec:
 
     configMap:
       theme: dark
-      default_redirection_url: "https://home-assistant.${SECRET_DOMAIN}"
+      default_redirection_url: "https://home-assistant.home.${SECRET_DOMAIN}"
 
       # authentication methods
       authentication_backend:
@@ -93,7 +93,7 @@ spec:
           timeout: 5s
           username: ${SECRET_SMTP_USERNAME}
           sender: ${SECRET_SMTP_USERNAME}
-          identifier: home.${SECRET_DOMAIN}
+          identifier: ${SECRET_DOMAIN}
 
       # The Rules!!!
       access_control:
@@ -108,6 +108,7 @@ spec:
           - domain:
               # iot
               - &homeassistant "home-assistant.home.${SECRET_DOMAIN}"
+              - "echo-server.${SECRET_DOMAIN}"
             policy: bypass
             networks:
               - home
@@ -117,11 +118,12 @@ spec:
               # iot
               - "esphome-vscode.${SECRET_DOMAIN}"
               - "esphome.${SECRET_DOMAIN}"
-              - &homeassistant-vscode "home-assistant-vscode.home.${SECRET_DOMAIN}"
+              - "home-assistant-vscode.home.${SECRET_DOMAIN}"
               - *homeassistant
               - "node-red.${SECRET_DOMAIN}"
               - "zigbee2mqtt-vscode.${SECRET_DOMAIN}"
               - "zigbee2mqtt.${SECRET_DOMAIN}"
+              - "echo-server.${SECRET_DOMAIN}"
             policy: two_factor
             subject:
               - "group:admins"
