@@ -62,7 +62,7 @@ spec:
       dnsPolicy: "None"
       dnsConfig:
         nameservers:
-          - 10.0.6.222
+          - ${METALLB_INGRESS_ADDR}
       resources:
         requests:
           cpu: 10m
