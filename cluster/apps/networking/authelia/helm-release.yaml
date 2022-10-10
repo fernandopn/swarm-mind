@@ -108,8 +108,8 @@ spec:
         rules:
           - domain:
               # iot
+              - &echo-server "echo-server.${SECRET_DOMAIN}"
               - &homeassistant "home-assistant.home.${SECRET_DOMAIN}"
-              - "echo-server.${SECRET_DOMAIN}"
             policy: bypass
             networks:
               - home
@@ -117,14 +117,12 @@ spec:
           # At Home
           - domain:
               # iot
-              - "esphome-vscode.${SECRET_DOMAIN}"
-              - "esphome.${SECRET_DOMAIN}"
               - "home-assistant-vscode.home.${SECRET_DOMAIN}"
+              - "node-red.home.${SECRET_DOMAIN}"
+              - "zigbee2mqtt-vscode.home.${SECRET_DOMAIN}"
+              - "zigbee2mqtt.home.${SECRET_DOMAIN}"
+              - *echo-server
               - *homeassistant
-              - "node-red.${SECRET_DOMAIN}"
-              - "zigbee2mqtt-vscode.${SECRET_DOMAIN}"
-              - "zigbee2mqtt.${SECRET_DOMAIN}"
-              - "echo-server.${SECRET_DOMAIN}"
             policy: two_factor
             subject:
               - "group:admins"
