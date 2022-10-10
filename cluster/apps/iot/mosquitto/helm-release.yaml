@@ -87,7 +87,7 @@ spec:
         type: LoadBalancer
         loadBalancerIP: 10.0.6.227
         annotations:
-          coredns.io/hostname: "mosquitto.${SECRET_DOMAIN}"
+          coredns.io/hostname: "mosquitto.home.${SECRET_DOMAIN}"
         ports:
           mqtttls:
             enabled: true

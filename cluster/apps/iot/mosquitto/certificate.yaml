@@ -5,7 +5,7 @@ metadata:
   name: mosquitto-tls
 spec:
   dnsNames:
-    - "mosquitto.${SECRET_DOMAIN}"
+    - "mosquitto.home.${SECRET_DOMAIN}"
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
