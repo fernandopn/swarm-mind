@@ -62,7 +62,7 @@ spec:
       dnsPolicy: "None"
       dnsConfig:
         nameservers:
-          - ${METALLB_INGRESS_ADDR}
+          - ${METALLB_K8S_GATEWAY_ADDR}
       resources:
         requests:
           cpu: 10m
