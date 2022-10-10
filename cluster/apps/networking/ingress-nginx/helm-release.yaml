@@ -57,6 +57,7 @@ spec:
         use-forwarded-headers: "true"
       metrics:
         enabled: false
+      dnsPolicy: "None"
       dnsConfig:
         nameservers:
           - ${METALLB_INGRESS_ADDR}
