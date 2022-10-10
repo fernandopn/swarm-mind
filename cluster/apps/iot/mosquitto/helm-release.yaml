@@ -92,22 +92,17 @@ spec:
           mqtttls:
             enabled: true
             port: 8883
-
-    # TODO(fernandopn): Remove this ingress, there is no need for it
-    ingress:
-      main:
-        enabled: true
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          kubernetes.io/ingress.class: nginx
-          nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
-          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
-        hosts:
-          - host: *host
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - *host
-            secretName: *secrettls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mosquitto-tls
+  namespace: iot
+spec:
+  dnsNames:
+    - *host
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: letsencrypt-production
+  secretName: *secrettls
