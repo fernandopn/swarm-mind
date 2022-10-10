@@ -106,30 +106,22 @@ spec:
 
         rules:
           - domain:
-              - "sonarr.${SECRET_DOMAIN}"
-              - "radarr.${SECRET_DOMAIN}"
+              # iot
+              - &homeassistant "home-assistant.home.${SECRET_DOMAIN}"
             policy: bypass
-            resources:
-              - '^/feed/.*ics\?apikey=.*$'
+            networks:
+              - home
 
           # At Home
           - domain:
               # iot
               - "esphome-vscode.${SECRET_DOMAIN}"
               - "esphome.${SECRET_DOMAIN}"
-              - &homeassistant "home-assistant-vscode.${SECRET_DOMAIN}"
-              - &homeassistant "home-assistant.home.${SECRET_DOMAIN}"
+              - &homeassistant-vscode "home-assistant-vscode.${SECRET_DOMAIN}"
+              - *homeassistant
               - "node-red.${SECRET_DOMAIN}"
               - "zigbee2mqtt-vscode.${SECRET_DOMAIN}"
               - "zigbee2mqtt.${SECRET_DOMAIN}"
             policy: two_factor
             subject:
               - "group:admins"
-
-
-          - domain:
-              # iot
-              - *homeassistant
-            policy: bypass
-            networks:
-              - home
