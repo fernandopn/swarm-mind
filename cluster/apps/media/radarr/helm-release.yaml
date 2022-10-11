@@ -97,13 +97,13 @@ spec:
       main:
         enabled: true
         annotations:
-          coredns.io/hostname: &host "sonarr.home.${SECRET_DOMAIN}"
+          coredns.io/hostname: &host "radarr.home.${SECRET_DOMAIN}"
         hosts:
-          - host: "radarr.${SECRET_DOMAIN}"
+          - host: *host
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "radarr.${SECRET_DOMAIN}"
+              - *host
             secretName: radarr-tls
