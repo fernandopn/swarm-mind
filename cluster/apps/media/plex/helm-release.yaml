@@ -86,21 +86,7 @@ spec:
         loadBalancerIP: 10.0.6.228
         externalTrafficPolicy: Local
         annotations:
+          coredns.io/hostname: &host "plex.home.${SECRET_DOMAIN}"
           metallb.universe.tf/allow-shared-ip: plex
         port:
           port: 32400
-
-    ingress:
-      main:
-        enabled: true
-        annotations:
-          coredns.io/hostname: &host "plex.home.${SECRET_DOMAIN}"
-        hosts:
-          - host: *host
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - *host
-            secretName: plex-tls
