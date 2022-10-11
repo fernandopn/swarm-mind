@@ -7,6 +7,6 @@ resources:
   - iot
   - kube-system
   - networking
+  - storage
   - system-upgrade
-  - pxe-manage
   - vault
