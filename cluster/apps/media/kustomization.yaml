@@ -1,11 +1,14 @@
+---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: media
 resources:
   - namespace.yaml
   - calibre
+  - radarr
   - sabnzbd
   - shared
+  - sonarr
 
 patches:
   - path: ./patch/base-helm.yaml

@@ -107,6 +107,13 @@ spec:
 
         rules:
           - domain:
+              - "sonarr.${SECRET_DOMAIN}"
+              - "radarr.${SECRET_DOMAIN}"
+            policy: bypass
+            resources:
+              - '^/feed/.*ics\?apikey=.*$'
+
+          - domain:
               # iot
               - "home-assistant.home.${SECRET_DOMAIN}"
             policy: bypass
@@ -117,7 +124,9 @@ spec:
           - domain:
               # media
               - calibre.home.${SECRET_DOMAIN}
-              - sabnzbd.home.${SECRET_DOMAIN}
+              - "radarr.${SECRET_DOMAIN}"
+              - "sabnzbd.${SECRET_DOMAIN}"
+              - "sonarr.${SECRET_DOMAIN}"
               # iot
               - "home-assistant-vscode.home.${SECRET_DOMAIN}"
               - "node-red.home.${SECRET_DOMAIN}"
