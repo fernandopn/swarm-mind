@@ -123,11 +123,11 @@ spec:
               - "zigbee2mqtt.home.${SECRET_DOMAIN}"
               - "esphome-vscode.home.${SECRET_DOMAIN}"
               - "esphome.home.${SECRET_DOMAIN}"
-              - *echo-server
-              - *homeassistant
             policy: one_factor
             subject:
               - "group:admins"
+            networks:
+              - home
 
           # Away
           - domain:
