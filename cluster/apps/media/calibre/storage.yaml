@@ -6,6 +6,7 @@ metadata:
   labels:
     app: calibre
 spec:
+  storageClassName: ""
   capacity:
     storage: 1Gi
   volumeMode: Filesystem
@@ -27,6 +28,7 @@ apiVersion: v1
 metadata:
   name: calibre
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
