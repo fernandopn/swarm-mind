@@ -1,5 +1,5 @@
 ---
 kind: Kustomization
 resources:
-  - storage.yaml
-  - main.yaml
+  - namespace.yaml
+  - pxe-manange

@@ -8,4 +8,5 @@ resources:
   - kube-system
   - networking
   - system-upgrade
+  - pxe-manage
   - vault
