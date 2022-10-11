@@ -4,6 +4,7 @@ namespace: media
 resources:
   - namespace.yaml
   - calibre
+  - sabnzbd
   - shared
 
 patches:
