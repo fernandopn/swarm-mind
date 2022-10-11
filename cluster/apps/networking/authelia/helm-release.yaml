@@ -121,8 +121,16 @@ spec:
               - "node-red.home.${SECRET_DOMAIN}"
               - "zigbee2mqtt-vscode.home.${SECRET_DOMAIN}"
               - "zigbee2mqtt.home.${SECRET_DOMAIN}"
+              - "esphome-vscode.home.${SECRET_DOMAIN}"
+              - "esphome.home.${SECRET_DOMAIN}"
               - *echo-server
               - *homeassistant
+            policy: one_factor
+            subject:
+              - "group:admins"
+
+          # Away
+          - domain:
             policy: two_factor
             subject:
               - "group:admins"
