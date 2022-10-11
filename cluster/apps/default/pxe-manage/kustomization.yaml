@@ -1,6 +1,5 @@
 ---
 kind: Kustomization
 resources:
-  - namespace.yaml
   - storage.yaml
   - main.yaml
