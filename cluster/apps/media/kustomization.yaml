@@ -4,6 +4,7 @@ namespace: media
 resources:
   - namespace.yaml
   - calibre
+  - shared
 
 patches:
   - path: ./patch/base-helm.yaml
