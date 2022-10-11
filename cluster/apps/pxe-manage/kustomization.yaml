@@ -1,0 +1,7 @@
+---
+kind: Kustomization
+namespace: pxe-manange
+resources:
+  - nnamespace.yaml
+  - storage.yaml
+  - main.yaml
