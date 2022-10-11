@@ -124,6 +124,7 @@ spec:
           - domain:
               # media
               - "calibre.home.${SECRET_DOMAIN}"
+              - "plex.home.${SECRET_DOMAIN}"
               - "radarr.home.${SECRET_DOMAIN}"
               - "sabnzbd.home.${SECRET_DOMAIN}"
               - "sonarr.home.${SECRET_DOMAIN}"
