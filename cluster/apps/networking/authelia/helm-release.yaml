@@ -108,7 +108,6 @@ spec:
         rules:
           - domain:
               # iot
-              - &echo-server "echo-server.${SECRET_DOMAIN}"
               - &homeassistant "home-assistant.home.${SECRET_DOMAIN}"
             policy: bypass
             networks:
@@ -131,6 +130,7 @@ spec:
 
           # Away
           - domain:
+              - &echo-server "echo-server.${SECRET_DOMAIN}"
             policy: two_factor
             subject:
               - "group:admins"
