@@ -6,6 +6,7 @@ resources:
   - flux-system
   - iot
   - kube-system
+  - media
   - networking
   - storage
   - system-upgrade
