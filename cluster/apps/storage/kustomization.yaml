@@ -2,4 +2,4 @@
 kind: Kustomization
 resources:
   - namespace.yaml
-  - pxe-manange
+  - pxe-manage
