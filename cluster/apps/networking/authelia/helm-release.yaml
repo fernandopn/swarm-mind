@@ -123,6 +123,7 @@ spec:
           # At Home
           - domain:
               # media
+              - "bazarr.home.${SECRET_DOMAIN}"
               - "calibre.home.${SECRET_DOMAIN}"
               - "plex.home.${SECRET_DOMAIN}"
               - "radarr.home.${SECRET_DOMAIN}"
