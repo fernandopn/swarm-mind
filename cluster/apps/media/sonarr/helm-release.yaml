@@ -82,15 +82,15 @@ spec:
         existingClaim: tv
         mountPath: /tv
 
-    metrics:
-      enabled: true
-      serviceMonitor:
-        labels:
-          release: kube-prometheus-stack
-      prometheusRule:
-        enabled: true
-        labels:
-          role: alert-rules
+    # metrics:
+    #   enabled: true
+    #   serviceMonitor:
+    #     labels:
+    #       release: kube-prometheus-stack
+    #   prometheusRule:
+    #     enabled: true
+    #     labels:
+    #       role: alert-rules
 
     ingress:
       main:
