@@ -7,6 +7,7 @@ resources:
   - iot
   - kube-system
   - media
+  - monitoring
   - networking
   - storage
   - system-upgrade

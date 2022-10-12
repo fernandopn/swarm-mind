@@ -122,6 +122,8 @@ spec:
 
           # At Home
           - domain:
+              # monitoring
+              - "uptime-kuma.home.${SECRET_DOMAIN}"
               # media
               - "bazarr.home.${SECRET_DOMAIN}"
               - "calibre.home.${SECRET_DOMAIN}"
