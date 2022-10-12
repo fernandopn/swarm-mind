@@ -27,8 +27,8 @@ spec:
       tag: version-3.6.1
 
     # Backup
-    podAnnotations:
-      backup.velero.io/backup-volumes: config
+    # podAnnotations:
+    #   backup.velero.io/backup-volumes: config
 
     env:
       PGID: '1000'

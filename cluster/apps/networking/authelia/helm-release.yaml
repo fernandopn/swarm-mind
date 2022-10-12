@@ -32,8 +32,8 @@ spec:
       kind: Deployment
       strategy:
         type: Recreate
-      annotations:
-        backup.velero.io/backup-volumes: authelia
+      # annotations:
+      #   backup.velero.io/backup-volumes: authelia
 
     # Persistence of /config
     persistence:

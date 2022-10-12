@@ -1,0 +1,11 @@
+---
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: daily-backup
+  namespace: backup
+spec:
+  schedule: '@every 24h'
+  template:
+    includedResources: ['pods']
+  # ttl: 720h0m0s # Default

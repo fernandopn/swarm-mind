@@ -24,8 +24,8 @@ spec:
       repository: linuxserver/bazarr
       tag: version-v1.1.1
 
-    podAnnotations:
-      backup.velero.io/backup-volumes: config
+    # podAnnotations:
+    #   backup.velero.io/backup-volumes: config
 
     env:
       PGID: '1000'
