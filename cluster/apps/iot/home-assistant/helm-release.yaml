@@ -17,8 +17,8 @@ spec:
   values:
     # https://github.com/k8s-at-home/charts/blob/master/charts/stable/home-assistant/values.yaml
     # Backup
-    # podAnnotations:
-    #   backup.velero.io/backup-volumes: config
+    podAnnotations:
+      backup.velero.io/backup-volumes: config
 
     image:
       repository: homeassistant/home-assistant

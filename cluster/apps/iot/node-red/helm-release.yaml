@@ -16,8 +16,8 @@ spec:
         namespace: flux-system
   values:
     # Backup
-    # podAnnotations:
-    #   backup.velero.io/backup-volumes: data
+    podAnnotations:
+      backup.velero.io/backup-volumes: data
 
     podLabels:
       app: node-red

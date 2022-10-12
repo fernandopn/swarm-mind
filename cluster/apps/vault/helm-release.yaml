@@ -29,8 +29,8 @@ spec:
       TZ: "${SECRET_TIMEZONE}"
 
     # Backup
-    # podAnnotations:
-    #   backup.velero.io/backup-volumes: vaultwarden
+    podAnnotations:
+      backup.velero.io/backup-volumes: vaultwarden
 
     vaultwarden:
       domain: https://vault.${SECRET_DOMAIN}

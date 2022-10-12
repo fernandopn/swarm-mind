@@ -21,7 +21,7 @@ spec:
 
     # Backup
     podAnnotations:
-      # backup.velero.io/backup-volumes: data
+      backup.velero.io/backup-volumes: data
       configmap.reloader.stakater.com/reload: &config "mosquitto"
       secret.reloader.stakater.com/reload: &secrettls "mosquitto-tls"
 
