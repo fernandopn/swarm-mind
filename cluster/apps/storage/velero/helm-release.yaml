@@ -23,7 +23,7 @@ spec:
     deployRestic: true
 
     # This job upgrades the CRDs.
-    installCRDs: true
+    installCRDs: false
     upgradeCRDs: false
 
     initContainers:
