@@ -6,9 +6,9 @@ resources:
   - flux-system
   - iot
   - kube-system
-  # - media
-  # - monitoring
+  - media
+  - monitoring
   - networking
-  # - storage
+  - storage
   - system-upgrade
-  # - vault
+  - vault
