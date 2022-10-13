@@ -124,6 +124,9 @@ spec:
           - domain:
               # monitoring
               - "uptime-kuma.home.${SECRET_DOMAIN}"
+              - "alertmanager.home.${SECRET_DOMAIN}"
+              - "grafana.home.${SECRET_DOMAIN}"
+              - "prometheus.home.${SECRET_DOMAIN}"
               # media
               - "bazarr.home.${SECRET_DOMAIN}"
               - "calibre.home.${SECRET_DOMAIN}"
