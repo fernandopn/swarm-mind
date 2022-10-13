@@ -1,8 +1,11 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: monitoring
 resources:
   - namespace.yaml
+  - flux-system
+  - kube-prometheus-stack
   - shared
+  - speeedtest-exporter
+  - unifi-poller
   - uptime-kuma
