@@ -16,8 +16,8 @@ spec:
         namespace: flux-system
 
   values:
-    # nodeSelector:
-    #   role: iot-controller
+    nodeSelector:
+      kubernetes.io/hostname: cactuar
     # tolerations:
     #   - key: "dedicated"
     #     operator: "Equal"
