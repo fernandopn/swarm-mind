@@ -165,6 +165,7 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
+              storageClassName: ""
               selector:
                 matchLabels:
                   app: alertmanager
