@@ -100,6 +100,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
+              storageClassName: ""
               selector:
                 matchLabels:
                   app: prometheus
