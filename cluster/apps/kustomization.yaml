@@ -4,11 +4,11 @@ kind: Kustomization
 resources:
   - default
   - flux-system
-  - iot
+  # - iot
   - kube-system
-  - media
-  - monitoring
+  # - media
+  # - monitoring
   - networking
-  - storage
+  # - storage
   - system-upgrade
-  - vault
+  # - vault
