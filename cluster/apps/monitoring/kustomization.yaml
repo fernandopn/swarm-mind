@@ -6,6 +6,6 @@ resources:
   - flux-system
   - kube-prometheus-stack
   - shared
-  - speeedtest-exporter
+  - speedtest-exporter
   - unifi-poller
   - uptime-kuma
