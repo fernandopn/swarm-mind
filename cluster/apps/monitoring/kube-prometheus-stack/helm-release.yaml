@@ -1,0 +1,172 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  releaseName: kube-prometheus-stack
+  chart:
+    spec:
+      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+      version: 40.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community-charts
+        namespace: flux-system
+  interval: 1m
+  install:
+    remediation:
+      retries: 3
+  values:
+    # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
+
+    # we are not running
+    kubeApiServer:
+      enabled: false
+    kubeControllerManager:
+      enabled: false
+    kubeEtcd:
+      enabled: false
+    kubelet:
+      enabled: true
+    kubeProxy:
+      enabled: false
+    kubeScheduler:
+      enabled: false
+
+    defaultRules:
+      rules:
+        kubeStateMetrics: false
+        kubeProxy: false
+      labels:
+        role: alert-rules
+
+    grafana:
+      # https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+      podAnnotations:
+        backup.velero.io/backup-volumes: storage
+
+      deploymentStrategy:
+        type: Recreate
+
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+          coredns.io/hostname: &host-grafana "grafana.home.${SECRET_DOMAIN}"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
+          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
+        hosts:
+          - *host-grafana
+        tls:
+          - secretName: grafana-tls
+            hosts:
+              - *host-grafana
+
+      persistence:
+        enabled: true
+        existingClaim: grafana
+
+    prometheus:
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          coredns.io/hostname: &host-prometheus "prometheus.home.${SECRET_DOMAIN}"
+          nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
+          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
+        hosts:
+          - *host-prometheus
+        tls:
+          - secretName: prometheus-tls
+            hosts:
+              - *host-prometheus
+      prometheusSpec:
+        retention: 14d
+        enableAdminAPI: true
+        walCompression: true
+        podMetadata:
+          annotations:
+            backup.velero.io/backup-volumes: prometheus-kube-prometheus-stack-prometheus-db
+        # rules matcher
+        ruleSelector:
+          matchLabels:
+            role: alert-rules
+        ## Persistence
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              selector:
+                matchLabels:
+                  app: prometheus
+              resources:
+                requests:
+                  storage: 10Gi
+    alertmanager:
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          coredns.io/hostname: &host-alertmanager "alertmanager.home.${SECRET_DOMAIN}"
+          nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
+          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
+        hosts:
+          - *host-alertmanager
+        tls:
+          - secretName: alertmanager-tls
+            hosts:
+              - *host-alertmanager
+
+      config:
+        global:
+          slack_api_url: ${SECRET_ALERT_MANAGER_WEBHOOK}
+          resolve_timeout: 5m
+        receivers:
+          - name: 'null'
+          - name: 'slack'
+            slack_configs:
+              - send_resolved: true
+                title: |-
+                  [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ if ne .CommonAnnotations.summary ""}}{{ .CommonAnnotations.summary }} {{ else if ne .CommonAnnotations.message ""}}{{ .CommonAnnotations.message }} {{ else if ne .CommonAnnotations.description ""}}{{ .CommonAnnotations.description }} {{ else }}{{ .CommonLabels.alertname }}{{ end }}
+                text: >-
+                  {{ range .Alerts -}}
+                    *Alert:* {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
+                  {{ if ne .Annotations.summary ""}}*Summary:* {{ .Annotations.summary }} {{ else if ne .Annotations.message ""}}*Message:* {{ .Annotations.message }} {{ else if ne .Annotations.description ""}}*Description:* {{ .Annotations.description }}{{ end }}
+                  *Details:*
+                    {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
+                    {{ end }}
+                  {{ end }}
+        route:
+          group_by: ['alertname', 'job']
+          group_wait: 30s
+          group_interval: 5m
+          repeat_interval: 6h
+          receiver: 'slack'
+          routes:
+            - receiver: 'null'
+              match_re:
+                alertname: Watchdog|KubeAPIErrorBudgetBurn
+            - receiver: 'slack'
+              match_re:
+                severity: critical|warning
+                # severity: critical
+              continue: true
+
+      alertmanagerSpec:
+        podMetadata:
+          annotations:
+            backup.velero.io/backup-volumes: alertmanager-kube-prometheus-stack-alertmanager-db
+        storage:
+          volumeClaimTemplate:
+            spec:
+              selector:
+                matchLabels:
+                  app: alertmanager
+              resources:
+                requests:
+                  storage: 1Gi
