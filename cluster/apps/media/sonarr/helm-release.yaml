@@ -17,7 +17,9 @@ spec:
   install:
     remediation:
       retries: 3
-
+  dependsOn:
+    - name: sabnzbd
+      namespace: media
   values:
     # https://github.com/k8s-at-home/charts/blob/master/charts/stable/sonarr/values.yaml
     image:

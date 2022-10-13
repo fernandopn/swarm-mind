@@ -14,7 +14,9 @@ spec:
         kind: HelmRepository
         name: k8s-at-home
         namespace: flux-system
-
+  dependsOn:
+    - name: mosquitto
+      namespace: iot
   values:
     nodeSelector:
       kubernetes.io/hostname: cactuar
