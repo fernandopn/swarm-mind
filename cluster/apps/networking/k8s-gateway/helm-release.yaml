@@ -36,10 +36,3 @@ spec:
       annotations:
         metallb.universe.tf/loadBalancerIPs: "${METALLB_K8S_GATEWAY_ADDR}"
       externalTrafficPolicy: Local
-    zoneFiles:
-      - filename: ${SECRET_DOMAIN}.db
-        # Optional
-        domains: ${SECRET_DOMAIN}
-        contents: |
-          magrathea.${SECRET_DOMAIN}. IN CNAME ipv4.${SECRET_DOMAIN}.
-          unifi.${SECRET_DOMAIN}.     IN CNAME ipv4.${SECRET_DOMAIN}.
