@@ -27,6 +27,7 @@ spec:
     # Ingress
     ingress:
       main:
+        ingressClassName: "nginx"
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
