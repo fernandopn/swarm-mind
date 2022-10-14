@@ -49,7 +49,6 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "nginx"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           coredns.io/hostname: &host "hajimari.${SECRET_DOMAIN}"
