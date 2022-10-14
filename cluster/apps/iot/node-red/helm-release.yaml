@@ -17,6 +17,8 @@ spec:
   dependsOn:
     - name: home-assistant
       namespace: iot
+    - name: ingress-nginx
+      namespace: networking
   values:
     # Backup
     podAnnotations:

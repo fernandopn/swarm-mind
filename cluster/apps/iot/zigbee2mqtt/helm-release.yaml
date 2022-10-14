@@ -17,6 +17,8 @@ spec:
   dependsOn:
     - name: mosquitto
       namespace: iot
+    - name: ingress-nginx
+      namespace: networking
   values:
     nodeSelector:
       kubernetes.io/hostname: cactuar
