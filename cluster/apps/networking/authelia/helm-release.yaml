@@ -136,6 +136,7 @@ spec:
               - "radarr.home.${SECRET_DOMAIN}"
               - "sabnzbd.home.${SECRET_DOMAIN}"
               - "sonarr.home.${SECRET_DOMAIN}"
+              - "plex.home.${SECRET_DOMAIN}"
               # iot
               - "home-assistant-vscode.home.${SECRET_DOMAIN}"
               - "node-red.home.${SECRET_DOMAIN}"
