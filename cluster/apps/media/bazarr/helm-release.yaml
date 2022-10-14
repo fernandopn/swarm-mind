@@ -95,6 +95,9 @@ spec:
         enabled: true
         annotations:
           coredns.io/hostname: &host "bazarr.home.${SECRET_DOMAIN}"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "subtitles"
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8"
         hosts:
           - host: *host
             paths:

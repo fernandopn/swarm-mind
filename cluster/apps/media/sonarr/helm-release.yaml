@@ -99,6 +99,9 @@ spec:
         enabled: true
         annotations:
           coredns.io/hostname: &host "sonarr.home.${SECRET_DOMAIN}"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "television"
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8"
         hosts:
           - host: *host
             paths:

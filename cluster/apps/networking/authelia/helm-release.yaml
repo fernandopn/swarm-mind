@@ -61,7 +61,7 @@ spec:
 
     configMap:
       theme: dark
-      default_redirection_url: "https://home-assistant.home.${SECRET_DOMAIN}"
+      default_redirection_url: "https://hajimari.${SECRET_DOMAIN}"
 
       # authentication methods
       authentication_backend:
@@ -122,6 +122,9 @@ spec:
 
           # At Home
           - domain:
+              # default
+              - "echo-server.${SECRET_DOMAIN}"
+              - "hajimari.${SECRET_DOMAIN}"
               # monitoring
               - "uptime-kuma.home.${SECRET_DOMAIN}"
               - "alertmanager.home.${SECRET_DOMAIN}"

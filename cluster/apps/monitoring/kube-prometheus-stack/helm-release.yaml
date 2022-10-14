@@ -54,11 +54,14 @@ spec:
       ingress:
         enabled: true
         annotations:
-          kubernetes.io/ingress.class: "nginx"
-          coredns.io/hostname: &host-grafana "grafana.home.${SECRET_DOMAIN}"
           cert-manager.io/cluster-issuer: letsencrypt-production
+          coredns.io/hostname: &host-grafana "grafana.home.${SECRET_DOMAIN}"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "finance"
+          kubernetes.io/ingress.class: "nginx"
           nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
           nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8"
         hosts:
           - *host-grafana
         tls:
@@ -74,11 +77,14 @@ spec:
       ingress:
         enabled: true
         annotations:
-          kubernetes.io/ingress.class: "nginx"
           cert-manager.io/cluster-issuer: letsencrypt-production
           coredns.io/hostname: &host-prometheus "prometheus.home.${SECRET_DOMAIN}"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "alert"
+          kubernetes.io/ingress.class: "nginx"
           nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
           nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8"
         hosts:
           - *host-prometheus
         tls:
@@ -111,11 +117,14 @@ spec:
       ingress:
         enabled: true
         annotations:
-          kubernetes.io/ingress.class: "nginx"
           cert-manager.io/cluster-issuer: letsencrypt-production
           coredns.io/hostname: &host-alertmanager "alertmanager.home.${SECRET_DOMAIN}"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "account-alert"
+          kubernetes.io/ingress.class: "nginx"
           nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
           nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8"
         hosts:
           - *host-alertmanager
         tls:

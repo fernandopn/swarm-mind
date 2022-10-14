@@ -48,8 +48,11 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           coredns.io/hostname: &host "esphome.home.${SECRET_DOMAIN}"
           kubernetes.io/ingress.class: nginx
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "chip"
           nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
           nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8"
         hosts:
           - host: *host
             paths:
