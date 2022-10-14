@@ -33,6 +33,8 @@ spec:
           - iot
           - storage
       name: "Keeper"
+      lightTheme: "gazette"
+      darkTheme: "blackboard"
 
     podAnnotations:
       configmap.reloader.stakater.com/reload: "hajimari-settings"
