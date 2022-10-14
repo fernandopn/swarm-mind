@@ -15,6 +15,9 @@ spec:
         name: hajimari
         namespace: flux-system
       interval: 15m
+  dependsOn:
+    - name: ingress-nginx
+      namespace: networking
   install:
     createNamespace: false
     remediation:
