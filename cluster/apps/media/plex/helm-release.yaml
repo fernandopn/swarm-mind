@@ -86,24 +86,9 @@ spec:
         loadBalancerIP: 10.0.6.228
         externalTrafficPolicy: Local
         annotations:
+          coredns.io/hostname: "plex.home.${SECRET_DOMAIN}"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "cast"
           metallb.universe.tf/allow-shared-ip: plex
         port:
           port: 32400
-
-    ingress:
-      main:
-        enabled: true
-        annotations:
-          coredns.io/hostname: &host "plex.home.${SECRET_DOMAIN}"
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "cast"
-          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8"
-        hosts:
-          - host: *host
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - *host
-            secretName: plex-tls
