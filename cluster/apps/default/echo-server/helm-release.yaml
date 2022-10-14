@@ -54,6 +54,7 @@ spec:
         ingressClassName: "nginx"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
+          coredns.io/hostname: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
           external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
           external-dns/is-public: "true"
           hajimari.io/enable: "true"
@@ -61,7 +62,7 @@ spec:
           nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
           nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
         hosts:
-          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          - host: *host
             paths:
               - path: /
                 pathType: Prefix
