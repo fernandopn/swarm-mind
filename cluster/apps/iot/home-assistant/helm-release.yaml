@@ -18,7 +18,7 @@ spec:
     - name: mosquitto
       namespace: iot
     - name: ingress-nginx
-      namespace: networkign
+      namespace: networking
   values:
     # https://github.com/k8s-at-home/charts/blob/master/charts/stable/home-assistant/values.yaml
     # Backup
