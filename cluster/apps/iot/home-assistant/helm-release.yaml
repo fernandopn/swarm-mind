@@ -27,7 +27,7 @@ spec:
 
     image:
       repository: homeassistant/home-assistant
-      tag: 2022.10.3
+      tag: 2022.10.4
     env:
       TZ: "${SECRET_TIMEZONE}"
 
