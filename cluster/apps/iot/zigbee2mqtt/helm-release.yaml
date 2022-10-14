@@ -22,11 +22,6 @@ spec:
   values:
     nodeSelector:
       kubernetes.io/hostname: cactuar
-    # tolerations:
-    #   - key: "dedicated"
-    #     operator: "Equal"
-    #     value: "iot"
-    #     effect: "NoSchedule"
 
     # Backup
     podAnnotations:
