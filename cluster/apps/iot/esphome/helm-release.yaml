@@ -80,6 +80,7 @@ spec:
             mountPath: /config
         ingress:
           enabled: true
+          ingressClassName: "nginx"
           annotations:
             cert-manager.io/cluster-issuer: letsencrypt-production
             coredns.io/hostname: &host-vscode "esphome-vscode.${SECRET_DOMAIN}"

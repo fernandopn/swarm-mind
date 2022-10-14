@@ -61,7 +61,6 @@ spec:
         external-dns/is-public: "true"
         hajimari.io/enable: "true"
         hajimari.io/icon: "safe-square-outline"
-        kubernetes.io/ingress.class: nginx
       host: *host
       tls:
         - secretName: vaultwarden-tls
