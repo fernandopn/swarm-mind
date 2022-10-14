@@ -28,6 +28,15 @@ spec:
   values:
     # https://github.com/toboshii/hajimari/blob/main/charts/hajimari/values.yaml
     hajimari:
+      globalBookmarks:
+        - group: Control
+          bookmarks:
+            - name: Github Repo
+              url: 'https://github.com/fernandopn/swarm-mind'
+        - group: Media
+          bookmarks:
+            - name: Plex
+              url: 'https://plex.tv'
       namespaceSelector:
         matchNames:
           - default
