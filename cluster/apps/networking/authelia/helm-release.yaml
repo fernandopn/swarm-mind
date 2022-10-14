@@ -44,7 +44,7 @@ spec:
     ingress:
       enabled: true
       subdomain: auth
-      ingressClassName: "nginx"
+      className: "nginx"
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
         coredns.io/hostname: "admin.${SECRET_DOMAIN}"

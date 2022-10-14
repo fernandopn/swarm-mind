@@ -20,6 +20,7 @@ spec:
       retries: 3
 
   values:
+    # https://github.com/gissilabs/charts/blob/master/vaultwarden/values.yaml
     # Focus on intel for now.
     nodeSelector:
       kubernetes.io/arch: amd64
@@ -53,7 +54,7 @@ spec:
 
     ingress:
       enabled: true
-      ingressClassName: "nginx"
+      className: "nginx"
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
         coredns.io/hostname: &host "vault.home.${SECRET_DOMAIN}"
