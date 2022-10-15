@@ -16,7 +16,7 @@ spec:
         namespace: flux-system
   dependsOn:
     - name: home-assistant
-      namespace: iot
+      namespace: home-automation
     - name: ingress-nginx
       namespace: networking
   values:

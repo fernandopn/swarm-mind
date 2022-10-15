@@ -2,85 +2,64 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: home-assistant
+  name: zigbee2mqtt
 spec:
   interval: 1h
   chart:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: home-assistant
-      version: 13.4.2
+      chart: zigbee2mqtt
+      version: 9.4.2
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
         namespace: flux-system
   dependsOn:
     - name: mosquitto
-      namespace: iot
+      namespace: home-automation
     - name: ingress-nginx
       namespace: networking
   values:
-    # https://github.com/k8s-at-home/charts/blob/master/charts/stable/home-assistant/values.yaml
+    nodeSelector:
+      kubernetes.io/hostname: cactuar
+
     # Backup
     podAnnotations:
-      backup.velero.io/backup-volumes: config
+      backup.velero.io/backup-volumes: data
 
     image:
-      repository: homeassistant/home-assistant
-      tag: 2022.10.3
+      repository: koenkk/zigbee2mqtt
+      tag: 1.28.0
+
+    # Pod
+    securityContext:
+      privileged: true
+    podSecurityContext:
+      supplementalGroups:
+        - 20 # dialout
+    strategy: # Need to turn down then turn up (depend on one usb device)
+      type: Recreate
     env:
       TZ: "${SECRET_TIMEZONE}"
-
-    metrics:
-      enabled: true
-      serviceMonitor:
-        labels:
-          release: kube-prometheus-stack
-        bearerTokenSecret:
-          name: "prometheus-secrets"
-          key: "prom-token"
-      prometheusRule:
-        enabled: true
-        labels:
-          role: alert-rules
-        rules:
-          - alert: EsphomeRebooted
-            annotations:
-              description: ESPHome {{ $labels.friendly_name }} rebooted.
-              summary: A esphome device had rebooted.
-            expr: |
-              delta(hass_esphome_uptime[10m]) <= 0
-            for: 0m
-            labels:
-              severity: warning
 
     # Pod
     resources:
       requests:
+        memory: "128Mi"
+        cpu: "100m"
+      limits:
         memory: "256Mi"
         cpu: "250m"
-      limits:
-        memory: "512Mi"
-        cpu: "1"
 
     # Persistence
     persistence:
-      config:
+      data:
         enabled: true
-        existingClaim: home-assistant
-
-    # Homekit integration
-    hostNetwork: true
-    service:
-      homekit:
+        existingClaim: zigbee2mqtt
+      usb:
         enabled: true
-        type: "LoadBalancer"
-        loadBalancerIP: 10.0.6.226
-        ports:
-          homekit:
-            enabled: true
-            port: 21065
-            protocol: TCP
+        hostPath: /dev/ttyUSB0
+        mountPath: /dev/ttyUSB0
 
     ingress:
       main:
@@ -88,9 +67,9 @@ spec:
         ingressClassName: "nginx"
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          coredns.io/hostname: &host "home-assistant.home.${SECRET_DOMAIN}"
+          coredns.io/hostname: &host "zigbee2mqtt.home.${SECRET_DOMAIN}"
           hajimari.io/enable: "true"
-          hajimari.io/icon: "home"
+          hajimari.io/icon: "home-automation"
           nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
           nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
           nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8"
@@ -102,26 +81,26 @@ spec:
         tls:
           - hosts:
               - *host
-            secretName: home-assistant-tls
+            secretName: zigbee2mqtt-tls
 
     addons:
       codeserver:
         enabled: true
-        workingDir: "/config"
+        workingDir: "/data"
         args:
           - --user-data-dir
-          - "/config/.vscode"
+          - "/data/.vscode"
           - --auth
           - "none"
         volumeMounts:
-          - name: config
-            mountPath: /config
+          - name: data
+            mountPath: /data
         ingress:
           enabled: true
           ingressClassName: "nginx"
           annotations:
             cert-manager.io/cluster-issuer: letsencrypt-production
-            coredns.io/hostname: &host-vscode "home-assistant-vscode.home.${SECRET_DOMAIN}"
+            coredns.io/hostname: &host-vscode "zigbee2mqtt-vscode.home.${SECRET_DOMAIN}"
             nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
             nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
           hosts:
@@ -132,4 +111,4 @@ spec:
           tls:
             - hosts:
                 - *host-vscode
-              secretName: home-assistant-vscode-tls
+              secretName: zigbee2mqtt-vscode-tls

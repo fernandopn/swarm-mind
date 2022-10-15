@@ -114,7 +114,7 @@ spec:
               - '^/feed/.*ics\?apikey=.*$'
 
           - domain:
-              # iot
+              # home-automation
               - "home-assistant.home.${SECRET_DOMAIN}"
             policy: bypass
             networks:
@@ -137,7 +137,7 @@ spec:
               - "sabnzbd.home.${SECRET_DOMAIN}"
               - "sonarr.home.${SECRET_DOMAIN}"
               - "plex.home.${SECRET_DOMAIN}"
-              # iot
+              # home-automation
               - "home-assistant-vscode.home.${SECRET_DOMAIN}"
               - "node-red.home.${SECRET_DOMAIN}"
               - "zigbee2mqtt-vscode.home.${SECRET_DOMAIN}"

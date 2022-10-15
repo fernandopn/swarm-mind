@@ -42,7 +42,7 @@ spec:
           - default
           - networking
           - media
-          - iot
+          - home-automation
           - storage
       name: "Keeper"
       lightTheme: "gazette"
