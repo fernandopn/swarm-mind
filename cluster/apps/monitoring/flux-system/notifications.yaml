@@ -21,9 +21,9 @@ spec:
   eventSeverity: info
   eventSources:
     - kind: GitRepository
-      name: '*'
+      name: "*"
     - kind: HelmRelease
-      name: '*'
+      name: "*"
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Alert
@@ -36,4 +36,4 @@ spec:
   eventSeverity: error
   eventSources:
     - kind: Kustomization
-      name: '*'
+      name: "*"

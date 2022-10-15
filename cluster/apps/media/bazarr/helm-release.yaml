@@ -32,8 +32,8 @@ spec:
       backup.velero.io/backup-volumes: config
 
     env:
-      PGID: '1000'
-      PUID: '1000'
+      PGID: "1000"
+      PUID: "1000"
 
     podSecurityContext:
       # runAsUser: 1000
