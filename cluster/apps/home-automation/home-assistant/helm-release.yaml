@@ -7,27 +7,30 @@ spec:
   interval: 1h
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: home-assistant
-      version: 13.4.2
+      chart: app-template
+      version: 0.2.2
+      interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s
         namespace: flux-system
+
   dependsOn:
     - name: mosquitto
       namespace: home-automation
     - name: ingress-nginx
       namespace: networking
   values:
-    # https://github.com/k8s-at-home/charts/blob/master/charts/stable/home-assistant/values.yaml
+    image:
+      repository: ghcr.io/home-assistant/home-assistant
+      tag: 2022.10.4
+
     # Backup
     podAnnotations:
+      # secret.reloader.stakater.com/reload: home-assistant-secrets
+      # k8s.v1.cni.cncf.io/networks: macvlan-static-iot-hass
       backup.velero.io/backup-volumes: config
 
-    image:
-      repository: homeassistant/home-assistant
-      tag: 2022.10.3
     env:
       TZ: "${SECRET_TIMEZONE}"
 
@@ -57,11 +60,19 @@ spec:
     # Pod
     resources:
       requests:
-        memory: "256Mi"
-        cpu: "250m"
+        cpu: 126m
+        memory: 411M
       limits:
-        memory: "512Mi"
-        cpu: "1"
+        cpu: 1
+        memory: 512Mi
+
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+      startup:
+        enabled: false
 
     # Persistence
     persistence:
@@ -72,6 +83,10 @@ spec:
     # Homekit integration
     hostNetwork: true
     service:
+      main:
+        ports:
+          http:
+            port: 8123
       homekit:
         enabled: true
         type: "LoadBalancer"
@@ -98,7 +113,6 @@ spec:
           - host: *host
             paths:
               - path: /
-                pathType: Prefix
         tls:
           - hosts:
               - *host
@@ -128,7 +142,6 @@ spec:
             - host: *host-vscode
               paths:
                 - path: /
-                  pathType: Prefix
           tls:
             - hosts:
                 - *host-vscode

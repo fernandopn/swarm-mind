@@ -99,7 +99,6 @@ spec:
             - host: *host-vscode
               paths:
                 - path: /
-                  pathType: Prefix
           tls:
             - hosts:
                 - *host-vscode
