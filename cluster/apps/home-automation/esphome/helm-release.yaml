@@ -7,24 +7,34 @@ spec:
   interval: 1h
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: esphome
-      version: 8.4.2
+      chart: app-template
+      version: 0.2.2
+      interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s
         namespace: flux-system
+
   dependsOn:
     - name: ingress-nginx
       namespace: networking
-  values:
-    # Backup
-    podAnnotations:
-      backup.velero.io/backup-volumes: config
 
+  values:
     image:
       repository: esphome/esphome
       tag: 2022.9.4
+
+    podAnnotations:
+      # secret.reloader.stakater.com/reload: esphome-config-deploykey
+      # k8s.v1.cni.cncf.io/networks: macvlan-static-iot-esphome
+      backup.velero.io/backup-volumes: config
+
+    service:
+      main:
+        ports:
+          http:
+            port: 6052
+
     env:
       TZ: "${SECRET_TIMEZONE}"
       ESPHOME_DASHBOARD_USE_PING: true
@@ -35,8 +45,8 @@ spec:
         memory: "256Mi"
         cpu: "500m"
       limits:
-        memory: "1024Mi"
-        cpu: "4"
+        memory: "518Mi"
+        cpu: "1"
 
     # Persistence
     persistence:
@@ -60,7 +70,6 @@ spec:
           - host: *host
             paths:
               - path: /
-                pathType: Prefix
         tls:
           - hosts:
               - *host
