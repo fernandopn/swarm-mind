@@ -34,8 +34,8 @@ spec:
         cpu: 15m
         memory: 64M
       limits:
-        cpu: 100m
-        memory: 124M
+        cpu: 30m
+        memory: 128M
 
     # Persistence
     # Storage

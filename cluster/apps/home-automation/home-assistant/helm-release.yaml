@@ -20,6 +20,7 @@ spec:
       namespace: home-automation
     - name: ingress-nginx
       namespace: networking
+
   values:
     image:
       repository: ghcr.io/home-assistant/home-assistant
@@ -60,11 +61,11 @@ spec:
     # Pod
     resources:
       requests:
-        cpu: 126m
-        memory: 411M
-      limits:
-        cpu: 1
+        cpu: 100m
         memory: 512Mi
+      limits:
+        cpu: 200m
+        memory: 700Mi
 
     probes:
       liveness:
