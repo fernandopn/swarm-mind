@@ -46,7 +46,6 @@ spec:
         cpu: "100m"
       limits:
         memory: "518Mi"
-        cpu: "200m"
 
     # Persistence
     persistence:
