@@ -42,11 +42,11 @@ spec:
     # Pod
     resources:
       requests:
-        memory: "64Mi"
-        cpu: "100m"
+        memory: "256Mi"
+        cpu: "250m"
       limits:
         memory: "518Mi"
-        cpu: "1"
+        cpu: "500m"
 
     # Persistence
     persistence:
