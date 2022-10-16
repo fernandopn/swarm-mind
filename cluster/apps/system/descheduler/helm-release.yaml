@@ -58,7 +58,7 @@ spec:
             nodeFit: true
 
         LowNodeUtilization:
-          enabled: true
+          enabled: false
 
         RemoveFailedPods:
           enabled: true
