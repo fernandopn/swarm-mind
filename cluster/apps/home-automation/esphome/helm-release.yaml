@@ -43,10 +43,10 @@ spec:
     resources:
       requests:
         memory: "256Mi"
-        cpu: "250m"
+        cpu: "100m"
       limits:
         memory: "518Mi"
-        cpu: "500m"
+        cpu: "200m"
 
     # Persistence
     persistence:
