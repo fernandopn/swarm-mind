@@ -41,6 +41,7 @@ spec:
     # Pod
     securityContext:
       privileged: true
+
     podSecurityContext:
       supplementalGroups:
         - 20 # dialout
