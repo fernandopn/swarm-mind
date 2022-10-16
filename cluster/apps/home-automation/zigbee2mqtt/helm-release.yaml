@@ -64,6 +64,7 @@ spec:
         existingClaim: zigbee2mqtt
       usb:
         enabled: true
+        type: hostPath
         hostPath: /dev/ttyUSB0
         mountPath: /dev/ttyUSB0
 
