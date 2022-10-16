@@ -10,5 +10,6 @@ resources:
   - monitoring
   - networking
   - storage
+  - system
   - system-upgrade
   - vault
