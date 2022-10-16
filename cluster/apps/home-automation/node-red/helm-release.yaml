@@ -7,19 +7,25 @@ spec:
   interval: 1h
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: node-red
-      version: 10.3.2
+      chart: app-template
+      version: 0.2.2
+      interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s
         namespace: flux-system
+
   dependsOn:
     - name: home-assistant
       namespace: home-automation
     - name: ingress-nginx
       namespace: networking
+
   values:
+    image:
+      repository: nodered/node-red
+      tag: 3.0.2
+
     # Backup
     podAnnotations:
       backup.velero.io/backup-volumes: data
@@ -27,11 +33,9 @@ spec:
     podLabels:
       app: node-red
 
-    image:
-      repository: nodered/node-red
-      tag: 3.0.2
     env:
       TZ: "${SECRET_TIMEZONE}"
+      FLOWS: flows.json
 
     # Pod
     resources:
@@ -64,6 +68,12 @@ spec:
             mountPath: /data
         securityContext:
           runAsUser: 0
+
+    service:
+      main:
+        ports:
+          http:
+            port: 1880
 
     ingress:
       main:
