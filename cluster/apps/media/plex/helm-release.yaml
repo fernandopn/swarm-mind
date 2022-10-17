@@ -88,23 +88,8 @@ spec:
         externalTrafficPolicy: Local
         annotations:
           metallb.universe.tf/allow-shared-ip: plex
-        port:
-          port: 32400
-
-    ingress:
-      main:
-        enabled: true
-        annotations:
           coredns.io/hostname: "plex.home.${SECRET_DOMAIN}"
           hajimari.io/enable: "true"
           hajimari.io/icon: "cast"
-          nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-        ingressClassName: nginx
-        hosts:
-          - host: &host plex.${INGRESS_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - *host
+        port:
+          port: 32400
