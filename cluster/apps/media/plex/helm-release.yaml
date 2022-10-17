@@ -3,23 +3,24 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: plex
+  namespace: media
 spec:
-  interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: plex
-      version: 6.4.3
+      chart: app-template
+      version: 0.2.2
+      interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s
         namespace: flux-system
+  interval: 30m
+
   install:
     remediation:
       retries: 3
 
   values:
-    # https://github.com/k8s-at-home/charts/blob/master/charts/stable/plex/values.yaml
     image:
       repository: plexinc/pms-docker
       tag: 1.29.0.6244-819d3678c
@@ -50,13 +51,12 @@ spec:
     # Pod
     resources:
       requests:
-        # gpu.intel.com/i915: 1
-        cpu: 1
-        memory: 6Gi
+        cpu: 100m
+        gpu.intel.com/i915: 1
+        memory: 4282M
       limits:
-        # gpu.intel.com/i915: 1
-        cpu: 4
-        memory: 10Gi
+        gpu.intel.com/i915: 1
+        memory: 12G
 
     # Persistence
     persistence:
@@ -81,14 +81,30 @@ spec:
     hostNetwork: true
     service:
       main:
+        primary: true
         enabled: true
         type: LoadBalancer
         loadBalancerIP: 10.0.6.228
         externalTrafficPolicy: Local
         annotations:
-          coredns.io/hostname: "plex.home.${SECRET_DOMAIN}"
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "cast"
           metallb.universe.tf/allow-shared-ip: plex
         port:
           port: 32400
+
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          coredns.io/hostname: "plex.home.${SECRET_DOMAIN}"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "cast"
+          nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+        ingressClassName: nginx
+        hosts:
+          - host: &host plex.${INGRESS_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host

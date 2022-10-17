@@ -25,19 +25,13 @@ spec:
       repository: docker.io/intel/intel-gpu-plugin
       tag: 0.24.1
 
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: feature.node.kubernetes.io/custom-intel-gpu
-                  operator: In
-                  values:
-                    - "true"
-
     args:
       - -shared-dev-num
       - "2"
+
+    # No need to deploy it on Arm machines.
+    nodeSelector:
+      kubernetes.io/arch: amd64
 
     service:
       main:
