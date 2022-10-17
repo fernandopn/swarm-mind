@@ -44,8 +44,6 @@ spec:
       requests:
         memory: "256Mi"
         cpu: "100m"
-      limits:
-        memory: "518Mi"
 
     # Persistence
     persistence:
