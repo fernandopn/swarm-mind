@@ -90,5 +90,6 @@ spec:
           coredns.io/hostname: "plex.home.${SECRET_DOMAIN}"
           hajimari.io/enable: "true"
           hajimari.io/icon: "cast"
-        port:
-          port: 32400
+        ports:
+          http:
+            port: 32400
