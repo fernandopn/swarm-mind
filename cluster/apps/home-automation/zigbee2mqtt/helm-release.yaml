@@ -28,7 +28,7 @@ spec:
       tag: 1.28.0
 
     nodeSelector:
-      kubernetes.io/hostname: hurricane
+      kubernetes.io/hostname: cactuar
 
     # Backup
     podAnnotations:
