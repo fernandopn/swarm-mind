@@ -81,7 +81,6 @@ spec:
     hostNetwork: true
     service:
       main:
-        primary: true
         enabled: true
         type: LoadBalancer
         loadBalancerIP: 10.0.6.228
