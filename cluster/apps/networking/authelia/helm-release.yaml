@@ -103,7 +103,7 @@ spec:
         networks:
           - name: home
             networks:
-              - 10.0.0.0/8
+              - 10.0.0.0/16
               - 192.168.3.0/24
 
         rules:
