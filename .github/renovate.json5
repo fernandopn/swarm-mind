@@ -78,6 +78,16 @@
       "commitMessageExtra": "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
       "matchUpdateTypes": ["major", "minor", "patch"]
     },
+    //<major>.<minor>.<patch>.<build>
+    {
+      "matchDatasources": ["docker"],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<build>\\d+)$",
+      "matchPackageNames": [
+        "plexinc/pms-docker"
+      ],
+      "commitMessageTopic": "container image {{depName}}",
+      "commitMessageExtra": "to {{#if isSingleVersion}}{{{toVersion}}}{{else}}{{{newValue}}}{{/if}}"
+    },
     {
       "description": "Group Cert-Manager image (for CRDs) and chart",
       "groupName": "Cert-Manager",
