@@ -2,24 +2,26 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: sonarr
+  name: home-assistant
 spec:
-  interval: 5m
+  interval: 1h
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: sonarr
-      version: 16.3.2
+      chart: app-template
+      version: 0.2.2
+      interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s
         namespace: flux-system
+
   install:
     remediation:
       retries: 3
   dependsOn:
     - name: sabnzbd
       namespace: media
+
   values:
     # https://github.com/k8s-at-home/charts/blob/master/charts/stable/sonarr/values.yaml
     image:
@@ -28,6 +30,8 @@ spec:
 
     # Backup
     podAnnotations:
+      # secret.reloader.stakater.com/reload: home-assistant-secrets
+      # k8s.v1.cni.cncf.io/networks: macvlan-static-iot-hass
       backup.velero.io/backup-volumes: config
 
     env:
@@ -84,15 +88,12 @@ spec:
         existingClaim: tv
         mountPath: /tv
 
-    # metrics:
-    #   enabled: true
-    #   serviceMonitor:
-    #     labels:
-    #       release: kube-prometheus-stack
-    #   prometheusRule:
-    #     enabled: true
-    #     labels:
-    #       role: alert-rules
+    service:
+      main:
+        enabled: true
+        ports:
+          http:
+            port: 8989
 
     ingress:
       main:
