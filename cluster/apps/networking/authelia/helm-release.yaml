@@ -20,11 +20,6 @@ spec:
       retries: 3
   values:
     # https://github.com/authelia/chartrepo/blob/master/charts/authelia/values.yaml
-    image:
-      # registry: ghcr.io
-      registry: docker.io
-      repository: authelia/authelia
-      tag: 4.37.0
 
     domain: "${SECRET_DOMAIN}"
 
