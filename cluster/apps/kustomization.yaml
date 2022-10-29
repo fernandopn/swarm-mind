@@ -6,10 +6,10 @@ resources:
   - flux-system
   - home-automation
   - kube-system
-  - media
+  # - media
   - monitoring
   - networking
-  - storage
+  # - storage
   - system
   - system-upgrade
-  - vault
+  # - vault
