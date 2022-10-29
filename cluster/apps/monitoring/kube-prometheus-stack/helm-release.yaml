@@ -24,11 +24,11 @@ spec:
     # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
 
     # https://github.com/helm/charts/issues/21080
-    prometheusOperator:
-      admissionWebhooks:
-        enabled: false
-        patch:
-          enabled: false
+    # prometheusOperator:
+    #   admissionWebhooks:
+    #     enabled: false
+    #     patch:
+    #       enabled: false
 
     # we are not running
     kubeApiServer:
