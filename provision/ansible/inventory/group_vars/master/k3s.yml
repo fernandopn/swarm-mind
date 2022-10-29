@@ -13,10 +13,8 @@ k3s_server:
     - "{{ kubevip_address }}"
   # Disable Docker - this will use the default containerd CRI
   docker: false
-  flannel-backend: "none" # This needs to be in quotes
+  flannel-backend: "host-gw" # This needs to be in quotes
   disable:
-    # Disable flannel - replaced with Calico
-    - flannel
     # Disable traefik - replaced with ingress-nginx
     - traefik
     # Disable servicelb - replaced with metallb and install with Flux
