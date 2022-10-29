@@ -22,6 +22,11 @@ spec:
   upgrade:
     remediation:
       retries: 5
+
+  dependsOn:
+    - name: ingress-nginx
+      namespace: networking
+
   values:
     installCRDs: false
     webhook:

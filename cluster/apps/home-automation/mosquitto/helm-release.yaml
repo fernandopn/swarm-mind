@@ -15,8 +15,11 @@ spec:
         namespace: flux-system
       interval: 30m
 
-  values:
+  dependsOn:
+    - name: cert-manager
+      namespace: kube-system
 
+  values:
     image:
       repository: eclipse-mosquitto
       tag: 2.0.15

@@ -6,6 +6,11 @@ spec:
   install:
     remediation:
       retries: 3
+
+  dependsOn:
+    - name: ingress-nginx
+      namespace: networking
+
   values:
     # Auto media should only run on intel/amd
     nodeSelector:
