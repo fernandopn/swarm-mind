@@ -4,12 +4,12 @@ kind: Kustomization
 resources:
   - default
   - flux-system
-  # - home-automation
+  - home-automation
   - kube-system
   # - media
   - monitoring
   - networking
-  # - storage
+  - storage
   - system
   - system-upgrade
-  # - vault
+  - vault
