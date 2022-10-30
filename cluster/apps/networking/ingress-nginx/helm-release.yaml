@@ -46,7 +46,8 @@ spec:
         custom-http-errors: |-
           401,403,404,500,501,502,503
         enable-brotli: "true"
-        forwardwed-for-header: "CF-Connecting-IP"
+        forwardwed-for-header: "X-Forwarded-For"
+        # forwardwed-for-header: "CF-Connecting-IP"
         hsts-max-age: "31449600"
         keep-alive: 120
         keep-alive-requests: 10000
