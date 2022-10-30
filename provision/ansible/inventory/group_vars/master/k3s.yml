@@ -13,7 +13,7 @@ k3s_server:
     - "{{ kubevip_address }}"
   # Disable Docker - this will use the default containerd CRI
   docker: false
-  flannel-backend: "host-gw" # This needs to be in quotes
+  flannel-backend: "vxlan" # This needs to be in quotes
   disable:
     # Disable traefik - replaced with ingress-nginx
     - traefik
