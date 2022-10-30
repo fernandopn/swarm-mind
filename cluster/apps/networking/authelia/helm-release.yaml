@@ -58,9 +58,9 @@ spec:
       theme: dark
       default_redirection_url: "https://hajimari.${SECRET_DOMAIN}"
 
-      log:
-        ## Level of verbosity for logs: info, debug, trace.
-        level: trace
+      # log:
+      #   ## Level of verbosity for logs: info, debug, trace.
+      #   level: trace
 
       # authentication methods
       authentication_backend:
