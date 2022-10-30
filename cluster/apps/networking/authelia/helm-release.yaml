@@ -60,7 +60,7 @@ spec:
 
       log:
         ## Level of verbosity for logs: info, debug, trace.
-        level: debug
+        level: trace
 
       # authentication methods
       authentication_backend:
