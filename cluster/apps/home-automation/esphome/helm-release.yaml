@@ -90,6 +90,8 @@ spec:
           annotations:
             cert-manager.io/cluster-issuer: letsencrypt-production
             coredns.io/hostname: &host-vscode "esphome-vscode.home.${SECRET_DOMAIN}"
+            hajimari.io/enable: "true"
+            hajimari.io/icon: "code-greater-than"
             nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
             nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
           hosts:
