@@ -19,6 +19,10 @@ spec:
     remediation:
       retries: 3
 
+  dependsOn:
+    - name: ingress-nginx
+      namespace: networking
+
   values:
     # https://github.com/gissilabs/charts/blob/master/vaultwarden/values.yaml
     # Focus on intel for now.
