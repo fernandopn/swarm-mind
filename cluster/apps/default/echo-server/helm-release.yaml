@@ -62,8 +62,8 @@ spec:
           external-dns/is-public: "true"
           hajimari.io/enable: "true"
           hajimari.io/icon: "video-input-antenna"
-          nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
-          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
+          # nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
+          # nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN}/api/verify"
         hosts:
           - host: *host
             paths:
