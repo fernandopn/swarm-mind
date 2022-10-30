@@ -125,7 +125,7 @@ spec:
 
           - domain:
               # home-automation
-              - "home-assistant.home.${SECRET_DOMAIN}"
+              - "home-assistant.${SECRET_DOMAIN}"
             policy: bypass
             networks:
               - home
