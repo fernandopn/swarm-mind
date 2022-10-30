@@ -7,3 +7,5 @@ resources:
   - config.sops.yaml
   - helm-release.yaml
   - storage.yaml
+generatorOptions:
+  disableNameSuffixHash: true
