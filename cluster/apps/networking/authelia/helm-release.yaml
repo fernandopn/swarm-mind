@@ -117,8 +117,8 @@ spec:
 
         rules:
           - domain:
-              - "sonarr.home.${SECRET_DOMAIN}"
-              - "radarr.home.${SECRET_DOMAIN}"
+              - "sonarr.${SECRET_DOMAIN}"
+              - "radarr.${SECRET_DOMAIN}"
             policy: bypass
             resources:
               - '^/feed/.*ics\?apikey=.*$'
@@ -143,9 +143,9 @@ spec:
               # media
               - "bazarr.home.${SECRET_DOMAIN}"
               - "calibre.home.${SECRET_DOMAIN}"
-              - "radarr.home.${SECRET_DOMAIN}"
+              - "radarr.${SECRET_DOMAIN}"
               - "sabnzbd.home.${SECRET_DOMAIN}"
-              - "sonarr.home.${SECRET_DOMAIN}"
+              - "sonarr.${SECRET_DOMAIN}"
               - "plex.home.${SECRET_DOMAIN}"
               # home-automation
               - "home-assistant-vscode.home.${SECRET_DOMAIN}"

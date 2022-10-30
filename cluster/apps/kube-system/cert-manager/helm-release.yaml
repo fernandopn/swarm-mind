@@ -28,6 +28,7 @@ spec:
       namespace: networking
 
   values:
+    # https://github.com/cert-manager/cert-manager/blob/5c82440729f6d5df98cdee6df7b43b593f220623/deploy/charts/cert-manager/values.yaml
     installCRDs: false
     webhook:
       enabled: true
