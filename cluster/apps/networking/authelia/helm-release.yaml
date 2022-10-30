@@ -98,7 +98,7 @@ spec:
         networks:
           - name: home
             networks:
-              - 10.0.0.0/16
+              - 10.0.0.0/8
               - 192.168.3.0/24
 
         rules:
