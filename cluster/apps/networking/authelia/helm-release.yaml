@@ -133,8 +133,8 @@ spec:
           # At Home
           - domain:
               # default
+              - "${SECRET_DOMAIN}"
               - "echo-server.${SECRET_DOMAIN}"
-              - "hajimari.${SECRET_DOMAIN}"
               # monitoring
               - "uptime-kuma.home.${SECRET_DOMAIN}"
               - "alertmanager.home.${SECRET_DOMAIN}"
@@ -162,6 +162,7 @@ spec:
 
           # Away
           - domain:
+              - "${SECRET_DOMAIN}"
               - "echo-server.${SECRET_DOMAIN}"
             policy: two_factor
             subject:
