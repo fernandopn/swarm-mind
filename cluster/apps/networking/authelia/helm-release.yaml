@@ -25,6 +25,11 @@ spec:
 
   values:
     # https://github.com/authelia/chartrepo/blob/master/charts/authelia/values.yaml
+    image:
+      # registry: ghcr.io
+      registry: docker.io
+      repository: authelia/authelia
+      tag: 4.37.2
 
     domain: "${SECRET_DOMAIN}"
 
