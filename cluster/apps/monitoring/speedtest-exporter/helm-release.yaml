@@ -32,7 +32,7 @@ spec:
         enabled: true
         labels:
           role: alert-rules
-        downloadLimit: 1000
-        uploadLimit: 100
+        downloadLimit: (800*1024*1024)
+        uploadLimit: (80*1024*1024)
         pingLimit: 20
         jitterLimit: 30
