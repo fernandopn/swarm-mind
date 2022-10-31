@@ -1,0 +1,40 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: home-assistant
+  labels:
+    role: alert-rules
+spec:
+  groups:
+    - name: {{ include "common.names.fullname" . }}
+      rules:
+        - alert: EsphomeRebooted
+          annotations:
+            description: ESPHome {{ $labels.friendly_name }} rebooted.
+            summary: A esphome device had rebooted.
+          expr: |
+            delta(hass_esphome_uptime[10m]) <= 0
+          for: 0m
+          labels:
+            severity: warning
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: home-assistant
+  labels:
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      helm.toolkit.fluxcd.io/name: home-assistant
+      helm.toolkit.fluxcd.io/namespace: home-automation
+  endpoints:
+    - port: http
+      interval: 1m
+      scrapeTimeout: 30s
+      path: /api/prometheus
+      bearerTokenSecret:
+        name: "prometheus-secrets"
+        key: "prom-token"

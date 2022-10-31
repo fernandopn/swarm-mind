@@ -35,29 +35,6 @@ spec:
     env:
       TZ: "${SECRET_TIMEZONE}"
 
-    metrics:
-      enabled: true
-      serviceMonitor:
-        labels:
-          release: kube-prometheus-stack
-        bearerTokenSecret:
-          name: "prometheus-secrets"
-          key: "prom-token"
-      prometheusRule:
-        enabled: true
-        labels:
-          role: alert-rules
-        rules:
-          - alert: EsphomeRebooted
-            annotations:
-              description: ESPHome {{ $labels.friendly_name }} rebooted.
-              summary: A esphome device had rebooted.
-            expr: |
-              delta(hass_esphome_uptime[10m]) <= 0
-            for: 0m
-            labels:
-              severity: warning
-
     # Pod
     resources:
       requests:
