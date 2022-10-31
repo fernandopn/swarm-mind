@@ -7,7 +7,7 @@ metadata:
     role: alert-rules
 spec:
   groups:
-    - name: {{ include "common.names.fullname" . }}
+    - name: EspHome
       rules:
         - alert: EsphomeRebooted
           annotations:
