@@ -59,8 +59,8 @@ spec:
     secret:
       jwt:
         value: ${SECRET_AUTHELIA_JWT}
-      smtp:
-        value: ${SECRET_SMTP_PASSWORD}
+      # smtp:
+      #   value: ${SECRET_SMTP_PASSWORD}
       storageEncryptionKey:
         value: ${SECRET_AUTHELIA_STORAGE_ENCRYPTION_KEY}
 
@@ -94,16 +94,16 @@ spec:
           enabled: false
 
       notifier:
-        filesystem:
-          enabled: false
-        smtp:
-          enabledSecret: true
-          host: ${SECRET_SMTP_SERVER}
-          port: ${SECRET_SMTP_PORT}
-          timeout: 5s
-          username: ${SECRET_SMTP_USERNAME}
-          sender: ${SECRET_SMTP_USERNAME}
-          identifier: ${SECRET_DOMAIN}
+        # filesystem:
+        #   enabled: false
+        # smtp:
+        #   enabledSecret: true
+        #   host: ${SECRET_SMTP_SERVER}
+        #   port: ${SECRET_SMTP_PORT}
+        #   timeout: 5s
+        #   username: ${SECRET_SMTP_USERNAME}
+        #   sender: ${SECRET_SMTP_USERNAME}
+        #   identifier: ${SECRET_DOMAIN}
 
       # The Rules!!!
       access_control:
