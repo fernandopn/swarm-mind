@@ -66,7 +66,7 @@ spec:
 
     configMap:
       theme: dark
-      default_redirection_url: "https://hajimari.${SECRET_DOMAIN}"
+      default_redirection_url: "https://${SECRET_DOMAIN}"
 
       # log:
       #   ## Level of verbosity for logs: info, debug, trace.
@@ -133,8 +133,8 @@ spec:
           # At Home
           - domain:
               # default
-              - "${SECRET_DOMAIN}"
-              - "echo-server.${SECRET_DOMAIN}"
+              - "${SECRET_DOMAIN}" # hajimari
+              # - "echo-server.${SECRET_DOMAIN}"
               # monitoring
               - "uptime-kuma.home.${SECRET_DOMAIN}"
               - "alertmanager.home.${SECRET_DOMAIN}"
@@ -162,8 +162,8 @@ spec:
 
           # Away
           - domain:
-              - "${SECRET_DOMAIN}"
-              - "echo-server.${SECRET_DOMAIN}"
+              - "${SECRET_DOMAIN}" # hajimari
+              # - "echo-server.${SECRET_DOMAIN}"
             policy: two_factor
             subject:
               - "group:admins"
