@@ -20,7 +20,7 @@ spec:
     image:
       repository: velero/velero
       tag: v1.10.0
-    deployRestic: true
+    deployNodeAgent: true
 
     # This job upgrades the CRDs.
     installCRDs: false
