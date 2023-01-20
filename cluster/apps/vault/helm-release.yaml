@@ -42,11 +42,13 @@ spec:
       allowSignups: false
       showPasswordHint: false
       enableWebsockets: true
+      verifySignup: true
+      allowInvitation: false
       smtp:
         enabled: true
         host: ${SECRET_SMTP_SERVER}
         from: ${SECRET_SMTP_USERNAME}
-        ssl: true
+        fromName: "Vaultwarden"
         port: ${SECRET_SMTP_PORT}
         user: ${SECRET_SMTP_USERNAME}
         password: ${SECRET_SMTP_PASSWORD}
