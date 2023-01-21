@@ -28,7 +28,7 @@ spec:
       tag: 1.29.2
 
     nodeSelector:
-      kubernetes.io/hostname: cactuar
+      kubernetes.io/hostname: thor
 
     # Backup
     podAnnotations:
