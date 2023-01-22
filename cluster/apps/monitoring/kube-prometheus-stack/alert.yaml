@@ -8,7 +8,7 @@ spec:
   groups:
     - name: temperature
       rules:
-        - alert: temperatureWarning
+        - alert: temperature-warning
           annotations:
             message: Node {{ $labels.instance }} is at 80% of its max temperature
           expr: |-
@@ -16,7 +16,7 @@ spec:
           for: 5m
           labels:
             severity: warning
-        - alert: temperatureCritical
+        - alert: temperature-critical
           annotations:
             message: Node {{ $labels.instance }} is at its max temperature
           expr: |-
