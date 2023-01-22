@@ -1,0 +1,26 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: temperatureWarning
+  labels:
+    role: alert-rules
+spec:
+  groups:
+    - name: temperature
+      rules:
+        - alert: temperatureWarning
+          annotations:
+            message: Node {{ $labels.instance }} is at 80% of its max temperature
+          expr: |-
+            node_hwmon_temp_celsius > node_hwmon_temp_max_celsius*0.8
+          for: 5m
+          labels:
+            severity: warning
+        - alert: temperatureCritical
+          annotations:
+            message: Node {{ $labels.instance }} is at its max temperature
+          expr: |-
+            node_hwmon_temp_celsius > node_hwmon_temp_max_celsius
+          for: 5m
+          labels:
+            severity: critical
