@@ -26,7 +26,7 @@ spec:
           restartPolicy: OnFailure
           containers:
             - name: centos
-              image: centos:8
+              image: oraclelinux:8
               command: [sh, "/script/update.bash"]
               volumeMounts:
                 - name: updater-script
