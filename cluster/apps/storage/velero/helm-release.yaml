@@ -36,6 +36,14 @@ spec:
     credentials:
       existingSecret: gcp-credentials
 
+    schedules:
+      mybackup:
+        disabled: false
+        schedule: "@every 24h"
+        useOwnerReferencesInBackup: false
+        template:
+          includedResources: ["pods"]
+
     configuration:
       provider: gcp
       backupStorageLocation:

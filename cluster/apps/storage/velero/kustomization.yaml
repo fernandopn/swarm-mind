@@ -5,5 +5,4 @@ namespace: storage
 resources:
   - alerts.yaml
   - helm-release.yaml
-  - schedule.yaml
   - secrets.sops.yaml
