@@ -11,7 +11,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: sabnzbd
-      version: version-3.7.1
+      version: 9.4.2
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
@@ -24,7 +24,7 @@ spec:
     # https://github.com/k8s-at-home/charts/blob/master/charts/stable/sabnzbd/values.yaml
     image:
       repository: linuxserver/sabnzbd
-      tag: version-3.6.1
+      tag: version-3.7.1
 
     # Backup
     podAnnotations:
