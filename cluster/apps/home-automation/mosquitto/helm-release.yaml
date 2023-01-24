@@ -66,7 +66,7 @@ spec:
 
     initContainers:
       copy-config:
-        image: busybox
+        image: busybox:1.36.0
         command:
           ["sh", "-c", "cp /config/* /config-tls/* /mosquitto/configinc/"]
         volumeMounts:
