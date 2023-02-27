@@ -4,12 +4,12 @@ kind: Kustomization
 namespace: media
 resources:
   - namespace.yaml
-  - calibre
+  # - calibre
   - plex
-  - radarr
-  - sabnzbd
+  # - radarr
+  # - sabnzbd
   - shared
-  - sonarr
+  # - sonarr
   - bazarr
 
 patches:
