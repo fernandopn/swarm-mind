@@ -10,7 +10,7 @@ resources:
   # - sabnzbd
   - shared
   # - sonarr
-  - bazarr
+  # - bazarr
 
 patches:
   - path: ./patch/base-helm.yaml
