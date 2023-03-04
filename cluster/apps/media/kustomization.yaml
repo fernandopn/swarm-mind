@@ -6,11 +6,11 @@ resources:
   - namespace.yaml
   # - calibre
   - plex
-  # - radarr
-  # - sabnzbd
+  - radarr
+  - sabnzbd
   - shared
-  # - sonarr
-  # - bazarr
+  - sonarr
+  - bazarr
 
 patches:
   - path: ./patch/base-helm.yaml
