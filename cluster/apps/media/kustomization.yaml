@@ -6,10 +6,10 @@ resources:
   - namespace.yaml
   # - calibre
   - plex
-  # - radarr
-  # - sabnzbd
+  - radarr
+  - sabnzbd
   - shared
-  # - sonarr
+  - sonarr
   # - bazarr
 
 patches:
