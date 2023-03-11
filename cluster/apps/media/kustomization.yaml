@@ -7,10 +7,10 @@ resources:
   # - calibre
   - plex
   # - radarr
-  # - sabnzbd
+  - sabnzbd
   - shared
-  # - sonarr
-  # - bazarr
+  - sonarr
+  - bazarr
 
 patches:
   - path: ./patch/base-helm.yaml
