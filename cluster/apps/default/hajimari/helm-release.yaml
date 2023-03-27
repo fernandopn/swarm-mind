@@ -39,11 +39,10 @@ spec:
               url: "https://plex.tv"
       namespaceSelector:
         matchNames:
-          - default
-          - networking
-          - media
           - home-automation
-          - storage
+          - media
+          - monitoring
+          - vault
       name: "Keeper"
       lightTheme: "gazette"
       darkTheme: "blackboard"
