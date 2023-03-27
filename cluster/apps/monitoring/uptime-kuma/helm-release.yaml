@@ -47,7 +47,7 @@ spec:
         ingressClassName: "nginx"
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          coredns.io/hostname: &host "uptime-kuma.home.${SECRET_DOMAIN}"
+          coredns.io/hostname: &host "uptime-kuma.${SECRET_DOMAIN}"
           hajimari.io/enable: "true"
           hajimari.io/icon: "alert-decagram"
           nginx.ingress.kubernetes.io/auth-signin: "https://auth.${SECRET_DOMAIN}"
