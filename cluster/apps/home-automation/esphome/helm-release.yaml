@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.3.1
+      version: 1.3.2
       interval: 14m
       sourceRef:
         kind: HelmRepository
@@ -22,7 +22,7 @@ spec:
   values:
     image:
       repository: esphome/esphome
-      tag: 2023.3.0
+      tag: 2023.3.2
 
     podAnnotations:
       # secret.reloader.stakater.com/reload: esphome-config-deploykey
