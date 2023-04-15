@@ -29,7 +29,7 @@ spec:
         labels:
           release: kube-prometheus-stack
       prometheusRule:
-        enabled: true
+        enabled: false
         labels:
           role: alert-rules
         downloadLimit: (800*1024*1024)
