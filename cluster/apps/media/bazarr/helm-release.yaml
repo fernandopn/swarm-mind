@@ -7,13 +7,14 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: bazarr
-      version: 10.6.2
+      chart: app-template
+      version: 1.3.2
+      interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s
         namespace: flux-system
+
   install:
     remediation:
       retries: 3
@@ -22,13 +23,17 @@ spec:
       namespace: media
     - name: radarr
       namespace: media
+
   values:
     # https://github.com/k8s-at-home/charts/blob/master/charts/stable/bazarr/values.yaml
     image:
       repository: linuxserver/bazarr
-      tag: version-v1.1.1
+      tag: 1.2.0
 
+    # Backup
     podAnnotations:
+      # secret.reloader.stakater.com/reload: home-assistant-secrets
+      # k8s.v1.cni.cncf.io/networks: macvlan-static-iot-hass
       backup.velero.io/backup-volumes: config
 
     env:
@@ -89,12 +94,21 @@ spec:
         existingClaim: tv
         mountPath: /tv
 
+    service:
+      main:
+        enabled: true
+        ports:
+          http:
+            port: 6767
+
     # Network
     ingress:
       main:
         enabled: true
         annotations:
-          coredns.io/hostname: &host "bazarr.home.${SECRET_DOMAIN}"
+          coredns.io/hostname: &host "bazarr.${SECRET_DOMAIN}"
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          external-dns/is-public: "true"
           hajimari.io/enable: "true"
           hajimari.io/icon: "subtitles"
           nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8"

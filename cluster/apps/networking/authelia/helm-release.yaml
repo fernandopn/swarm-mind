@@ -141,7 +141,7 @@ spec:
               - "grafana.home.${SECRET_DOMAIN}"
               - "prometheus.home.${SECRET_DOMAIN}"
               # media
-              - "bazarr.home.${SECRET_DOMAIN}"
+              - "bazarr.${SECRET_DOMAIN}"
               - "calibre.home.${SECRET_DOMAIN}"
               - "radarr.${SECRET_DOMAIN}"
               - "sabnzbd.home.${SECRET_DOMAIN}"
