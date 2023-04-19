@@ -8,4 +8,4 @@ resources:
   - shared
   - speedtest-exporter
   - unifi-poller
-  - uptime-kuma
+  # - uptime-kuma
