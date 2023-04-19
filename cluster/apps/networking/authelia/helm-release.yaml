@@ -136,7 +136,7 @@ spec:
               - "${SECRET_DOMAIN}" # hajimari
               # - "echo-server.${SECRET_DOMAIN}"
               # monitoring
-              - "uptime-kuma.home.${SECRET_DOMAIN}"
+              - "uptime-kuma.${SECRET_DOMAIN}"
               - "alertmanager.home.${SECRET_DOMAIN}"
               - "grafana.home.${SECRET_DOMAIN}"
               - "prometheus.home.${SECRET_DOMAIN}"
