@@ -21,7 +21,7 @@ spec:
       repository: ghcr.io/miguelndecarvalho/speedtest-exporter
       tag: v3.5.3
     env:
-      TZ: "${SECRET_TIMEZONE}"
+      TZ: "${TIMEZONE}"
     metrics:
       enabled: true
       serviceMonitor:

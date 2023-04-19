@@ -20,7 +20,7 @@ spec:
       repository: golift/unifi-poller
       tag: 2.1.3
     env:
-      TZ: "${SECRET_TIMEZONE}"
+      TZ: "${TIMEZONE}"
       UP_UNIFI_DEFAULT_VERIFY_SSL: false
       UP_UNIFI_DEFAULT_URL: "${SECRET_UNIFI_URL}"
       UP_UNIFI_DEFAULT_USER: "${SECRET_UNIFI_DEFAULT_USER}"

@@ -33,7 +33,7 @@ spec:
       backup.velero.io/backup-volumes: config
 
     env:
-      TZ: "${SECRET_TIMEZONE}"
+      TZ: "${TIMEZONE}"
 
     # Pod
     resources:

@@ -35,7 +35,7 @@ spec:
       backup.velero.io/backup-volumes: data
 
     env:
-      TZ: "${SECRET_TIMEZONE}"
+      TZ: "${TIMEZONE}"
       ZIGBEE2MQTT_DATA: /data
 
     # Pod

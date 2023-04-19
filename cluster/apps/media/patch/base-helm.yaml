@@ -22,7 +22,7 @@ spec:
     strategy: # Need to turn down then turn up (depend on one persistent volume)
       type: Recreate
     env:
-      TZ: "${SECRET_TIMEZONE}"
+      TZ: "${TIMEZONE}"
 
     # Persistence
     persistence:

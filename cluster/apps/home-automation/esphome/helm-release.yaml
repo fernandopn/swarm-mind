@@ -36,7 +36,7 @@ spec:
             port: 6052
 
     env:
-      TZ: "${SECRET_TIMEZONE}"
+      TZ: "${TIMEZONE}"
       ESPHOME_DASHBOARD_USE_PING: true
 
     # Pod

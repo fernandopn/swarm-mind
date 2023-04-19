@@ -35,7 +35,7 @@ spec:
       app: node-red
 
     env:
-      TZ: "${SECRET_TIMEZONE}"
+      TZ: "${TIMEZONE}"
       FLOWS: flows.json
 
     # Pod
