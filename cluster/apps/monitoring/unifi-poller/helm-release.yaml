@@ -50,26 +50,8 @@ spec:
           http:
             port: 9130
 
-    metrics:
-      enabled: true
-      serviceMonitor:
-        interval: 1m
-        scrapeTimeout: 30s
+    serviceMonitor:
+      main:
         enabled: true
         labels:
           release: kube-prometheus-stack
-
-      prometheusRule:
-        enabled: true
-        labels:
-          role: alert-rules
-        rules:
-          - alert: UnifiPollerAbsent
-            annotations:
-              description: Unifi Poller has disappeared from Prometheus service discovery.
-              summary: Unifi Poller is down.
-            expr: |
-              absent(up{job=~".*{{ include "common.names.fullname" . }}.*"} == 1)
-            for: 5m
-            labels:
-              severity: critical
