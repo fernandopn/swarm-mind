@@ -8,7 +8,7 @@ metadata:
 spec:
   namespaceSelector:
     matchNames:
-      - networking
+      - monitoring
   selector:
     matchLabels:
       app.kubernetes.io/instance: uptime-kuma
