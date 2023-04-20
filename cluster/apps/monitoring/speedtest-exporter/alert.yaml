@@ -29,7 +29,7 @@ spec:
       rules:
         - alert: SpeedtestSlowInternetDownload
           annotations:
-            message: Internet download speed is averaging {{ "{{ humanize $value }}" }} Mbps.
+            message: Internet download speed is averaging "{{ humanize $value }}" Mbps.
           expr: |
             avg_over_time(speedtest_download_bits_per_second{job=~".*speedtest-exporter.*"}[4h])
               < (800*1024*1024)
@@ -38,7 +38,7 @@ spec:
             severity: warning
         - alert: SpeedtestSlowInternetUpload
           annotations:
-            message: Internet upload speed is averaging {{ "{{ humanize $value }}" }} Mbps.
+            message: Internet upload speed is averaging "{{ humanize $value }}" Mbps.
           expr: |
             avg_over_time(speedtest_upload_bits_per_second{job=~".*speedtest-exporter.*"}[4h])
               < (80*1024*1024)
