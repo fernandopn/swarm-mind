@@ -19,7 +19,6 @@ spec:
     remediation:
       retries: 3
   values:
-    # https://github.com/k8s-at-home/charts/blob/master/charts/stable/uptime-kuma/values.yaml
     image:
       repository: louislam/uptime-kuma
       tag: 1.21.2
