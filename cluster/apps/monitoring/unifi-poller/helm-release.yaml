@@ -18,7 +18,6 @@ spec:
   install:
     remediation:
       retries: 3
-
   values:
     image:
       repository: golift/unifi-poller
@@ -35,13 +34,21 @@ spec:
       UP_PROMETHEUS_DISABLE: false
       UP_PROMETHEUS_NAMESPACE: "unifipoller"
 
-  service:
-    main:
-      ports:
-        metrics:
-          enabled: true
-          protocol: TCP
-          port: 9130
+    # Pod
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "512Mi"
+        cpu: "1"
+
+    service:
+      main:
+        enabled: true
+        ports:
+          metrics:
+            port: 9130
 
     metrics:
       enabled: true
