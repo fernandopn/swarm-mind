@@ -47,7 +47,7 @@ spec:
       main:
         enabled: true
         ports:
-          metrics:
+          http:
             port: 9130
 
     metrics:
