@@ -34,15 +34,6 @@ spec:
       UP_PROMETHEUS_DISABLE: false
       UP_PROMETHEUS_NAMESPACE: "unifipoller"
 
-    # Pod
-    resources:
-      requests:
-        memory: "256Mi"
-        cpu: "250m"
-      limits:
-        memory: "512Mi"
-        cpu: "1"
-
     service:
       main:
         enabled: true

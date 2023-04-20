@@ -7,32 +7,27 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: speedtest-exporter
-      version: 5.4.2
+      chart: app-template
+      version: 1.3.2
+      interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s
         namespace: flux-system
-      interval: 5m
+
+  install:
+    remediation:
+      retries: 3
   values:
-    # https://github.com/k8s-at-home/charts/blob/master/charts/stable/speedtest-exporter/values.yaml
     image:
       repository: ghcr.io/miguelndecarvalho/speedtest-exporter
       tag: v3.5.3
     env:
       TZ: "${TIMEZONE}"
-    metrics:
-      enabled: true
-      serviceMonitor:
-        interval: 5m
-        labels:
-          release: kube-prometheus-stack
-      prometheusRule:
-        enabled: false
-        labels:
-          role: alert-rules
-        downloadLimit: (800*1024*1024)
-        uploadLimit: (80*1024*1024)
-        pingLimit: 20
-        jitterLimit: 30
+
+    service:
+      main:
+        enabled: true
+        ports:
+          http:
+            port: 9798
