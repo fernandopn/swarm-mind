@@ -49,9 +49,3 @@ spec:
         ports:
           http:
             port: 9130
-
-    serviceMonitor:
-      main:
-        enabled: true
-        labels:
-          release: kube-prometheus-stack
