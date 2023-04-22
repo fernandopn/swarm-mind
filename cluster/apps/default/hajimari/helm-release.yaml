@@ -57,6 +57,10 @@ spec:
       limits:
         memory: 256Mi
 
+    persistence:
+      data:
+        enabled: false
+
     ingress:
       main:
         enabled: true
