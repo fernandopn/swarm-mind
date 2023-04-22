@@ -15,7 +15,7 @@ spec:
   endpoints:
     - interval: 10m
       port: http
-      scrapeTimeout: 10s
+      scrapeTimeout: 1m
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
