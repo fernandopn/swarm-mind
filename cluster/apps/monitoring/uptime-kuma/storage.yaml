@@ -8,7 +8,7 @@ metadata:
 spec:
   storageClassName: ""
   capacity:
-    storage: 1Gi
+    storage: 2Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
@@ -33,7 +33,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 2Gi
   selector:
     matchLabels:
       app: uptime-kuma
