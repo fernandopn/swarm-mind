@@ -36,6 +36,7 @@ spec:
       data:
         enabled: true
         existingClaim: uptime-kuma
+        path: /app/data
 
     service:
       main:
