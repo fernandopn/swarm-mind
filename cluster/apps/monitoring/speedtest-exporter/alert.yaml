@@ -32,7 +32,7 @@ spec:
             message: Internet download speed is averaging "{{ humanize $value }}" Mbps.
           expr: |
             avg_over_time(speedtest_download_bits_per_second{job=~".*speedtest-exporter.*"}[4h])
-              < (800*1024*1024)
+              < (700*1024*1024)
           for: 15m
           labels:
             severity: warning
@@ -41,7 +41,7 @@ spec:
             message: Internet upload speed is averaging "{{ humanize $value }}" Mbps.
           expr: |
             avg_over_time(speedtest_upload_bits_per_second{job=~".*speedtest-exporter.*"}[4h])
-              < (80*1024*1024)
+              < (70*1024*1024)
           for: 15m
           labels:
             severity: warning
