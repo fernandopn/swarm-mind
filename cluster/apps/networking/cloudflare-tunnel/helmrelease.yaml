@@ -39,9 +39,6 @@ spec:
     #   UP_PROMETHEUS_DISABLE: false
     #   UP_PROMETHEUS_NAMESPACE: "unifipoller"
 
-    # service:
-    #   main:
-    #     enabled: true
-    #     ports:
-    #       http:
-    #         port: 9130
+    service:
+      main:
+        enabled: false
