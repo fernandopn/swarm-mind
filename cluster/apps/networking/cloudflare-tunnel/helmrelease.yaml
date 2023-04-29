@@ -20,7 +20,7 @@ spec:
       retries: 3
   values:
     image:
-      repository: cloudflare/cloudflared:latest
+      repository: cloudflare/cloudflared
       tag: 2023.4.2
 
     args:
