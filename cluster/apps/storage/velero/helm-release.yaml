@@ -45,14 +45,15 @@ spec:
           includedResources: ["pods"]
 
     configuration:
-      provider: gcp
       backupStorageLocation:
-        name: default
-        bucket: ${SECRET_VELERO_BUCKET}
-        prefix: cluster
+        - name: default
+          bucket: ${SECRET_VELERO_BUCKET}
+          prefix: cluster
+          provider: gcp
       volumeSnapshotLocation:
-        name: default
-        bucket: ${SECRET_VELERO_BUCKET}
+        - name: default
+          bucket: ${SECRET_VELERO_BUCKET}
+          provider: gcp
     metrics:
       serviceMonitor:
         enabled: true
