@@ -5,7 +5,7 @@ resources:
   - namespace.yaml
   - authelia
   - cloudflare-ddns
-  # - cloudflare-tunnel
+  - cloudflare-tunnel
   - external-dns
   - ingress-nginx
   - k8s-gateway
