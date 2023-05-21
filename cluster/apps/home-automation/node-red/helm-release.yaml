@@ -54,7 +54,7 @@ spec:
 
     initContainers:
       update-config-ownership:
-        image: busybox:1.36.0
+        image: busybox:1.36.1
         command: ["sh", "-c", "chown -R 1000:1000 /data"]
         volumeMounts:
           - name: data
@@ -62,7 +62,7 @@ spec:
         securityContext:
           runAsUser: 0
       update-config-permission:
-        image: busybox:1.36.0
+        image: busybox:1.36.1
         command: ["sh", "-c", "chmod -R 770 /data"]
         volumeMounts:
           - name: data
