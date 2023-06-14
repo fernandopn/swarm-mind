@@ -114,7 +114,6 @@ spec:
             networks:
               - 10.0.0.0/16
               - 192.168.3.0/24
-              - 46.8.172.222/32
 
         rules:
           - domain:
@@ -155,11 +154,11 @@ spec:
               - "zigbee2mqtt.home.${SECRET_DOMAIN}"
               - "esphome-vscode.home.${SECRET_DOMAIN}"
               - "esphome.home.${SECRET_DOMAIN}"
-            policy: one_factor
+            policy: two_factor
             subject:
               - "group:admins"
-            networks:
-              - home
+            # networks:
+            #   - home
 
           # Away
           - domain:
