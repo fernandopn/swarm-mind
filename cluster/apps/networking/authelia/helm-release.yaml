@@ -97,7 +97,6 @@ spec:
         # filesystem:
         #   enabled: false
         smtp:
-          enabledSecret: true
           host: ${SECRET_SMTP_SERVER}
           port: ${SECRET_SMTP_PORT}
           timeout: 5s
