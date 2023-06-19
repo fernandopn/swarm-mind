@@ -10,11 +10,6 @@
       ansible.builtin.pause:
         seconds: 5
   tasks:
-    - name: Locale
-      block:
-        - name: Locale | Set timezone
-          community.general.timezone:
-            name: "{{ timezone | default('Etc/UTC') }}"
     - name: Networking
       block:
         - name: Networking | Set hostname to inventory hostname
