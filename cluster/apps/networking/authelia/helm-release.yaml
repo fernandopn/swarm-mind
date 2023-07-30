@@ -124,6 +124,14 @@ spec:
               - '^/feed/.*ics\?apikey=.*$'
 
           - domain:
+              - "sabnzbd.home.${SECRET_DOMAIN}"
+            policy: bypass
+            resources:
+              - '^/sabnzbd/api?apikey=.*$'
+            networks:
+              - home
+
+          - domain:
               # home-automation
               - "home-assistant.${SECRET_DOMAIN}"
             policy: bypass
