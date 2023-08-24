@@ -21,7 +21,7 @@ spec:
   values:
     image:
       repository: cloudflare/cloudflared
-      tag: 2023.7.3
+      tag: 2023.8.0
 
     args:
       - --no-autoupdate
