@@ -48,6 +48,7 @@ spec:
     ingress:
       main:
         enabled: true
+        className: "nginx"
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           coredns.io/hostname: &host "uptime-kuma.${SECRET_DOMAIN}"
