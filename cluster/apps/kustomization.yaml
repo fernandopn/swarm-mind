@@ -11,5 +11,5 @@ resources:
   - networking
   - storage
   - system
-  - system-upgrade
+  # - system-upgrade
   - vault
