@@ -96,7 +96,8 @@ spec:
       notifier:
         filesystem:
           enabled: true
-        # smtp:
+        smtp:
+          enabled: false
         #   enabledSecret: true
         #   host: ${SECRET_SMTP_SERVER}
         #   port: ${SECRET_SMTP_PORT}
