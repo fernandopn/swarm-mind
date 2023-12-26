@@ -94,16 +94,16 @@ spec:
           enabled: false
 
       notifier:
-        # filesystem:
-        #   enabled: false
-        smtp:
-          enabledSecret: true
-          host: ${SECRET_SMTP_SERVER}
-          port: ${SECRET_SMTP_PORT}
-          timeout: 5s
-          username: ${SECRET_SMTP_USERNAME}
-          sender: ${SECRET_SMTP_USERNAME}
-          identifier: ${SECRET_DOMAIN}
+        filesystem:
+          enabled: true
+        # smtp:
+        #   enabledSecret: true
+        #   host: ${SECRET_SMTP_SERVER}
+        #   port: ${SECRET_SMTP_PORT}
+        #   timeout: 5s
+        #   username: ${SECRET_SMTP_USERNAME}
+        #   sender: ${SECRET_SMTP_USERNAME}
+        #   identifier: ${SECRET_DOMAIN}
 
       # The Rules!!!
       access_control:
