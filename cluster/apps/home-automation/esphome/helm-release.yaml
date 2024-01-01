@@ -22,7 +22,7 @@ spec:
   values:
     image:
       repository: esphome/esphome
-      tag: 2023.11.6
+      tag: 2023.12.5
 
     podAnnotations:
       # secret.reloader.stakater.com/reload: esphome-config-deploykey
