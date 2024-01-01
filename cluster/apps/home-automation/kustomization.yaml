@@ -6,6 +6,6 @@ resources:
   - home-assistant
   - mosquitto
   - namespace.yaml
-  - node-red
+  # - node-red
   - shared
   - zigbee2mqtt
