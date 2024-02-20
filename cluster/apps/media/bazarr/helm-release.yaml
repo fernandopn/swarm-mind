@@ -28,7 +28,7 @@ spec:
     # https://github.com/k8s-at-home/charts/blob/master/charts/stable/bazarr/values.yaml
     image:
       repository: linuxserver/bazarr
-      tag: 1.4.1
+      tag: 1.4.2
 
     # Backup
     podAnnotations:
