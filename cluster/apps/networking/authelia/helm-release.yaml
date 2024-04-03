@@ -164,6 +164,8 @@ spec:
           # Away
           - domain:
               - "${SECRET_DOMAIN}" # hajimari
+              - "sonarr.${SECRET_DOMAIN}"
+              - "radarr.${SECRET_DOMAIN}"
               # - "echo-server.${SECRET_DOMAIN}"
             policy: two_factor
             subject:
