@@ -24,7 +24,7 @@ spec:
     # https://github.com/k8s-at-home/charts/blob/master/charts/stable/sabnzbd/values.yaml
     image:
       repository: linuxserver/sabnzbd
-      tag: version-4.3.1
+      tag: version-4.3.2
 
     # Backup
     podAnnotations:
