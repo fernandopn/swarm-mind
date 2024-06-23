@@ -118,18 +118,11 @@ spec:
 
         rules:
           - domain:
-              - "sonarr.${SECRET_DOMAIN}"
-              - "radarr.${SECRET_DOMAIN}"
+              - "sonarr.home.${SECRET_DOMAIN}"
+              - "radarr.home.${SECRET_DOMAIN}"
             policy: bypass
             resources:
               - '^/feed/.*ics\?apikey=.*$'
-
-          - domain:
-              # home-automation
-              - "home-assistant.${SECRET_DOMAIN}"
-            policy: bypass
-            networks:
-              - home
 
           # At Home
           - domain:
@@ -137,24 +130,17 @@ spec:
               - "${SECRET_DOMAIN}" # hajimari
               # - "echo-server.${SECRET_DOMAIN}"
               # monitoring
-              - "uptime-kuma.${SECRET_DOMAIN}"
+              - "uptime-kuma.admin.${SECRET_DOMAIN}"
               - "alertmanager.home.${SECRET_DOMAIN}"
               - "grafana.home.${SECRET_DOMAIN}"
               - "prometheus.home.${SECRET_DOMAIN}"
               # media
-              - "bazarr.${SECRET_DOMAIN}"
+              - "bazarr.home.${SECRET_DOMAIN}"
               - "calibre.home.${SECRET_DOMAIN}"
-              - "radarr.${SECRET_DOMAIN}"
+              - "radarr.home.${SECRET_DOMAIN}"
               - "sabnzbd.home.${SECRET_DOMAIN}"
-              - "sonarr.${SECRET_DOMAIN}"
+              - "sonarr.home.${SECRET_DOMAIN}"
               - "plex.home.${SECRET_DOMAIN}"
-              # home-automation
-              - "home-assistant-vscode.home.${SECRET_DOMAIN}"
-              - "node-red.home.${SECRET_DOMAIN}"
-              - "zigbee2mqtt-vscode.home.${SECRET_DOMAIN}"
-              - "zigbee2mqtt.home.${SECRET_DOMAIN}"
-              - "esphome-vscode.home.${SECRET_DOMAIN}"
-              - "esphome.home.${SECRET_DOMAIN}"
             policy: one_factor
             subject:
               - "group:admins"
