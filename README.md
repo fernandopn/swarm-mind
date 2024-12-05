@@ -538,6 +538,7 @@ The world is your cluster, have at it!
 
 ## 🤝 Thanks
 
+
 Big shout out to all the authors and contributors to the projects that we are using in this repository.
 
 Community member [@Whazor](https://github.com/whazor) created [this website](https://whazor.github.io/k8s-at-home-search/) as a creative way to search Helm Releases across GitHub. You may use it as a means to get ideas on how to configure an applications' Helm values.
